@@ -1,0 +1,17 @@
+{
+  "name": "event-manager-kma",
+  "version": "1.0.0",
+  "description": "Даний проект розроблений з використанням MERN-стеку, який включає MongoDB, Express.js, React.js та Node.js. \r Він дозволяє студентам Національного університету \"Києво-Могилянська академія\" отримувати інформацію про різноманітні заходи, що організовуються різними студентськими організаціями, а також залишати власні враження від минулих заходів.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2"
+  }
+}
