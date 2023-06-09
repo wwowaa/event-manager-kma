@@ -70,13 +70,13 @@ function App() {
       </HelmetProvider>
       <Router>
         <Routes>
-          <Route path="auth" element={<Authorization />} />
-          <Route path="main" element={<Main />} />
-          <Route path="event" element={<Event />} />
+          {/* <Route path="auth" element={<Authorization />} /> */}
+          <Route path="/" element={<Main />} />
+          {/* <Route path="event" element={<Event />} />
           <Route path="fullcalendar" element={<FullCalendar />} />
           <Route path="signup" element={<SignUp />} />
           <Route path="passreset1" element={<PassReset1 />} />
-          <Route path="passreset2" element={<PassReset2 />} />
+          <Route path="passreset2" element={<PassReset2 />} /> */}
         </Routes>
       </Router>
     </div>
