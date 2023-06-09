@@ -1,45 +1,39 @@
-import { Helmet, HelmetProvider } from "react-helmet-async";
+import s from "./event.module.css";
 
 const Event = () => {
   return (
-    <div className={`${s['event']}`}>
-      <HelmetProvider>
-        <Helmet>
-          <meta content="Main Page" property="og:title" />
-          <meta content="Main Page" property="twitter:title" />
-        </Helmet>
-      </HelmetProvider>
-      <section className={`${s['wf-section']}`}>
-        <div className={`${s['w-layout-grid']} ${s['grid-2']}`}>
+    <div className={`${s["event"]}`}>
+      <section className={`${s["wf-section"]}`}>
+        <div className={`${s["w-layout-grid"]} ${s["grid-2"]}`}>
           <div
-            id={s['w-node-f92008a7-8b35-66e3-c9e6-be074db36a69-442f355a']}
-            className={`${s['w-container']}`}
+            id={s["w-node-f92008a7-8b35-66e3-c9e6-be074db36a69-442f355a"]}
+            className={`${s["w-container"]}`}
           >
             <img
               src="https://uploads-ssl.webflow.com/647656c1558e6661a7504185/6478735b446190bbebce5d89_%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202023-06-01%20133014.png"
               loading="lazy"
-              id={s['w-node-ca582dd3-54d8-958c-6433-3de79cc8350d-442f355a']}
+              id={s["w-node-ca582dd3-54d8-958c-6433-3de79cc8350d-442f355a"]}
               sizes="(max-width: 638px) 100vw, 638px"
               srcset="https://uploads-ssl.webflow.com/647656c1558e6661a7504185/6478735b446190bbebce5d89_%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202023-06-01%20133014-p-500.png 500w, https://uploads-ssl.webflow.com/647656c1558e6661a7504185/6478735b446190bbebce5d89_%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202023-06-01%20133014.png 638w"
               alt=""
             />
           </div>
           <div
-            id={s['w-node-_1a09ed2b-8753-fc1d-a82f-46661f8b457e-442f355a']}
-            className={`${s['container-7']} ${s['w-container']}`}
+            id={s["w-node-_1a09ed2b-8753-fc1d-a82f-46661f8b457e-442f355a"]}
+            className={`${s["container-7"]} ${s["w-container"]}`}
           ></div>
         </div>
       </section>
-      <section className={`${s['section-8']} ${s['wf-section']}`}>
-        <div className={`${s['div-block']}`}>
-          <p className={`${s['paragraph-6-copy']}`}>LOGO</p>
+      <section className={`${s["section-8"]} ${s["wf-section"]}`}>
+        <div className={`${s["div-block"]}`}>
+          <p className={`${s["paragraph-6-copy"]}`}>LOGO</p>
         </div>
-        <div className={`${s['container-8']} ${s['w-container']}`}>
-          <h1 className={`${s['heading-4']}`}>EVENT NAME</h1>
+        <div className={`${s["container-8"]} ${s["w-container"]}`}>
+          <h1 className={`${s["heading-4"]}`}>EVENT NAME</h1>
         </div>
       </section>
-      <div className={`${s['div-block-copy']}`}>
-        <p className={`${s['paragraph-6']}`}>
+      <div className={`${s["div-block-copy"]}`}>
+        <p className={`${s["paragraph-6"]}`}>
           Organized by:
           <br />
           <br />
@@ -55,14 +49,16 @@ const Event = () => {
           <br />‍
         </p>
       </div>
-      <section className={`${s['wf-section']}`}>
-        <div className={`${s['container-9']} ${s['w-container']}`}>
-          <p className={`${s['paragraph-3']}`}>Possible Image or Poster Placeholder</p>
+      <section className={`${s["wf-section"]}`}>
+        <div className={`${s["container-9"]} ${s["w-container"]}`}>
+          <p className={`${s["paragraph-3"]}`}>
+            Possible Image or Poster Placeholder
+          </p>
         </div>
       </section>
-      <section className={`${s['section-5']} ${s['wf-section']}`}>
-        <div className={`${s['container-10']} ${s['w-container']}`}>
-          <p className={`${s['paragraph-7']}`}>
+      <section className={`${s["section-5"]} ${s["wf-section"]}`}>
+        <div className={`${s["container-10"]} ${s["w-container"]}`}>
+          <p className={`${s["paragraph-7"]}`}>
             Optional Description Text of the Event: <br />
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
             fermentum arcu quis tellus maximus, sit amet tincidunt erat
@@ -76,34 +72,37 @@ const Event = () => {
           </p>
         </div>
       </section>
-      <section className={`${s['section-2-copy']} ${s['wf-section']}`}>
-        <div className={`${s['w-layout-grid']} ${s['grid']}`}>
+      <section className={`${s["section-2-copy"]} ${s["wf-section"]}`}>
+        <div className={`${s["w-layout-grid"]} ${s["grid"]}`}>
           <div
-            id={s['w-node-_92111368-c205-f514-14e9-074c3d5db14a-442f355a']}
-            className={`${s['w-container']}`}
+            id={s["w-node-_92111368-c205-f514-14e9-074c3d5db14a-442f355a"]}
+            className={`${s["w-container"]}`}
           >
             <a
               href="./mainpage.html"
               aria-current="page"
-              className={`${s['button']} ${s['w-button']} ${s['w--current']}`}
+              className={`${s["button"]} ${s["w-button"]} ${s["w--current"]}`}
             >
               REMIND ME
             </a>
           </div>
           <div
-            id={s['w-node-_92111368-c205-f514-14e9-074c3d5db14d-442f355a']}
-            className={`${s['w-container']}`}
+            id={s["w-node-_92111368-c205-f514-14e9-074c3d5db14d-442f355a"]}
+            className={`${s["w-container"]}`}
           >
-            <a href="./mainpage.html" className={`${s['button-copy']} ${s['w-button']}`}>
+            <a
+              href="./mainpage.html"
+              className={`${s["button-copy"]} ${s["w-button"]}`}
+            >
               {" "}
               BACK{" "}
             </a>
           </div>
         </div>
       </section>
-      <section className={`${s['section-7']} ${s['wf-section']}`}>
-        <div className={`${s['w-container']}`}>
-          <h1 className={`${s['heading-7']}`}>©VabeTech 2023</h1>
+      <section className={`${s["section-7"]} ${s["wf-section"]}`}>
+        <div className={`${s["w-container"]}`}>
+          <h1 className={`${s["heading-7"]}`}>©VabeTech 2023</h1>
         </div>
       </section>
       <script

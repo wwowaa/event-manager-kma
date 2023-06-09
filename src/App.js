@@ -1,16 +1,16 @@
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import "./App.css";
-
-import Authorization from "./auth/auth";
-import Main from "./main/main";
-import FullCalendar from "./fullcalendar/fullcalendar";
-import SignUp from "./signup/signup";
-import PassReset1 from "./passreset1/passreset1";
-import PassReset2 from "./passreset2/passreset2";
-import Event from "./event/event";
-
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import WebFont from "webfontloader";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+import Authorization from "./auth/auth-p";
+import Main from "./main/main-p";
+import FullCalendar from "./fullcalendar/fullcalendar-p";
+import SignUp from "./signup/signup-p";
+import PassReset1 from "./passreset1/passreset1-p";
+import PassReset2 from "./passreset2/passreset2-p";
+import Event from "./event/event-p";
+
+import "./App.css";
 
 function App() {
   return (
@@ -20,8 +20,8 @@ function App() {
           <meta charset="utf-8" />
           <title>VabeTech&#x27;s Event Manager</title>
           <meta content="width=device-width, initial-scale=1" name="viewport" />
-          {/* <meta content="Main Page" property="og:title" />
-          <meta content="Main Page" property="twitter:title" /> */}
+          <meta content="Main Page" property="og:title" />
+          <meta content="Main Page" property="twitter:title" />
 
           <link href="https://fonts.googleapis.com" rel="preconnect" />
           <link
@@ -43,6 +43,7 @@ function App() {
               },
             })}
           </script>
+
           {/* 
           <script type="text/javascript">
             {
@@ -70,13 +71,13 @@ function App() {
       </HelmetProvider>
       <Router>
         <Routes>
-          {/* <Route path="auth" element={<Authorization />} /> */}
-          <Route path="/" element={<Main />} />
-          {/* <Route path="event" element={<Event />} />
+          <Route path="auth" element={<Authorization />} />
+          <Route path="main" element={<Main />} />
+          <Route path="event" element={<Event />} />
           <Route path="fullcalendar" element={<FullCalendar />} />
           <Route path="signup" element={<SignUp />} />
           <Route path="passreset1" element={<PassReset1 />} />
-          <Route path="passreset2" element={<PassReset2 />} /> */}
+          <Route path="passreset2" element={<PassReset2 />} />
         </Routes>
       </Router>
     </div>
