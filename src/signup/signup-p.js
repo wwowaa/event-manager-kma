@@ -1,8 +1,14 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import s from "./signup.module.css";
 
 const SignUp = () => {
+  const [name, setName] = useState("");
+  const [email1, setEmail1] = useState("");
+  const [email2, setEmail2] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <div className={`${s["signUp"]}`}>
       <section className={`${s["wf-section"]}`}>
@@ -45,6 +51,8 @@ const SignUp = () => {
                 placeholder=""
                 id={s["email-2"]}
                 required=""
+                value={email2}
+                onChange={(e) => setEmail2(e.target.value)}
               />
               <label for="name" className={`${s["field-label"]}`}>
                 Email
@@ -57,6 +65,8 @@ const SignUp = () => {
                 data-name="Name"
                 placeholder=""
                 id={s["name"]}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
               <label for="email" className={`${s["field-label-2"]}`}>
                 Password
@@ -70,6 +80,8 @@ const SignUp = () => {
                 placeholder=""
                 id={s["email"]}
                 required=""
+                value={email1}
+                onChange={(e) => setEmail1(e.target.value)}
               />
               <label for="email-3" className={`${s["field-label-2"]}`}>
                 Confirm The Password
@@ -83,6 +95,8 @@ const SignUp = () => {
                 placeholder=""
                 id={s["email-3"]}
                 required=""
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </form>
             <div className={`${s["w-form-done"]}`}>

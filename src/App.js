@@ -2,6 +2,7 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import WebFont from "webfontloader";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
+import NotFound from "./NotFound";
 import Authorization from "./auth/auth-p";
 import Main from "./main/main-p";
 import FullCalendar from "./fullcalendar/fullcalendar-p";
@@ -27,7 +28,7 @@ function App() {
           <link
             href="https://fonts.gstatic.com"
             rel="preconnect"
-            crossorigin="anonymous"
+            crossOrigin="anonymous"
           />
           <script
             src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"
@@ -78,6 +79,7 @@ function App() {
           <Route path="signup" element={<SignUp />} />
           <Route path="passreset1" element={<PassReset1 />} />
           <Route path="passreset2" element={<PassReset2 />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
     </div>

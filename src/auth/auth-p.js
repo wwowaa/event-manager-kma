@@ -1,8 +1,17 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import s from "./auth.module.css";
 
 const Authorization = () => {
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("submitted");
+  };
+
   return (
     <div className={`${s["auth"]}`}>
       <section className={`${s["wf-section"]}`}>
@@ -32,6 +41,7 @@ const Authorization = () => {
               name="email-form"
               data-name="Email Form"
               method="get"
+              onSubmit={handleSubmit}
             >
               <label for="name" className={`${s["field-label"]}`}>
                 Email
@@ -44,6 +54,8 @@ const Authorization = () => {
                 data-name="Name"
                 placeholder=""
                 id={s["name"]}
+                value={login}
+                onChange={(e) => setLogin(e.target.value)}
               />
               <label for="email" className={`${s["field-label-2"]}`}>
                 Password
@@ -57,6 +69,8 @@ const Authorization = () => {
                 placeholder=""
                 id={s["email"]}
                 required=""
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </form>
             <div className={`${s["w-form-done"]}`}>
