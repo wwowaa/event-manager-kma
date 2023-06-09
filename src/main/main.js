@@ -3,12 +3,11 @@ import s from "./mainpage.module.css";
 const Main = () => {
   return (
     <div classNameName={s.main}>
-      <section className={s["wf-section"]}>
-        <div className={s["w-layout-grid grid-2"]}>
-          {/* {`${s['w-layout-grid']} ${s['grid-2']}` } */}
+      <section className={`${s["wf-section"]}`}>
+        <div className={`${s["w-layout-grid"]} ${s["grid-2"]}`}>
           <div
             id={s["w-node-f92008a7-8b35-66e3-c9e6-be074db36a69-442f355a"]}
-            className={s["w-container"]}
+            className={`${s["w-container"]}`}
           >
             <img
               src="https://uploads-ssl.webflow.com/647656c1558e6661a7504185/6478735b446190bbebce5d89_%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202023-06-01%20133014.png"
@@ -21,19 +20,21 @@ const Main = () => {
           </div>
           <div
             id={s["w-node-_1a09ed2b-8753-fc1d-a82f-46661f8b457e-442f355a"]}
-            className={s["container-7 w-container"]}
+            className={`${s["container-7"]} ${s["w-container"]}`}
           >
             <div
               data-hover="false"
               data-delay="0"
-              className={s["dropdown w-dropdown"]}
+              className={`${s["dropdown"]} ${s["w-dropdown"]}`}
             >
-              <div className={s["dropdown-toggle w-dropdown-toggle"]}>
-                <div className={s["w-icon-dropdown-toggle"]}></div>
-                <div className={s["text-block"]}>USERNAME</div>
+              <div
+                className={`${s["dropdown-toggle"]} ${s["w-dropdown-toggle"]}`}
+              >
+                <div className={`${s["w-icon-dropdown-toggle"]}`}></div>
+                <div className={`${s["text-block"]}`}>USERNAME</div>
               </div>
-              <nav className={s["w-dropdown-list"]}>
-                <a href="./auth.html" className={s["w-dropdown-link"]}>
+              <nav className={`${s["w-dropdown-list"]}`}>
+                <a href="./auth.html" className={`${s["w-dropdown-link"]}`}>
                   Sign Out
                 </a>
               </nav>
@@ -41,33 +42,36 @@ const Main = () => {
           </div>
         </div>
       </section>
-      <section className={s["wf-section"]}>
-        <div className={s["container-8 w-container"]}>
-          <h1 className={s["heading-3"]}>
+      <section className={`${s["wf-section"]}`}>
+        <div className={`${s["container-8"]} ${s["w-container"]}`}>
+          <h1 className={`${s["heading-3"]}`}>
             WELCOME TO THE
             <br />
           </h1>
-          <h1 className={s["heading-4"]}>EVENT MANAGER</h1>
+          <h1 className={`${s["heading-4"]}`}>EVENT MANAGER</h1>
         </div>
       </section>
-      <section className={s["wf-section"]}>
-        <div className={s["container-9 w-container"]}>
-          <p className={s["paragraph-3"]}>Calendar Placeholder</p>
+      <section className={`${s["wf-section"]}`}>
+        <div className={`${s["container-9"]} ${s["w-container"]}`}>
+          <p className={`${s["paragraph-3"]}`}>Calendar Placeholder</p>
         </div>
       </section>
-      <section className={s["section-5 wf-section"]}>
-        <div className={s["container-10 w-container"]}>
-          <a href="./fullcalendar.html" className={s["button-2 w-button"]}>
+      <section className={`${s["section-5"]} ${s["wf-section"]}`}>
+        <div className={`${s["container-10"]} ${s["w-container"]}`}>
+          <a
+            href="./fullcalendar.html"
+            className={`${s["button-2"]} ${s["w-button"]}`}
+          >
             Full Calendar
           </a>
         </div>
       </section>
-      <section className={s["section-6 wf-section"]}>
+      <section className={`${s["section-6"]} ${s["wf-section"]}`}>
         <div>
-          <div className={s["w-layout-grid grid-3"]}>
+          <div className={`${s["w-layout-grid"]} ${s["grid-3"]}`}>
             <div
               id={s["w-node-_4522216f-ffe5-e469-eb5a-c932f26bf855-442f355a"]}
-              className={s["container-11 w-container"]}
+              className={`${s["container-11"]} ${s["w-container"]}`}
             >
               <img
                 src="https://uploads-ssl.webflow.com/647656c1558e6661a7504185/64787882c7b7fd5334c45e37_fireworks-rocket-4613856-3831524.webp"
@@ -77,17 +81,17 @@ const Main = () => {
             </div>
             <div
               id={s["w-node-f7ffb499-4f19-5471-29f9-7d91a4904028-442f355a"]}
-              className={s["container-12 w-container"]}
+              className={`${s["container-12"]} ${s["w-container"]}`}
             >
               <h1
                 id={s["w-node-d15ec96c-fe3b-9b73-f00b-04666c7a70a1-442f355a"]}
-                className={s["heading-5"]}
+                className={`${s["heading-5"]}`}
               >
                 About
               </h1>
               <p
                 id={s["w-node-_6bec9db9-a065-09b6-4e12-15808e1840f5-442f355a"]}
-                className={s["paragraph-5"]}
+                className={`${s["paragraph-5"]}`}
               >
                 Welcome to Event Manager, the website dedicated to all the
                 exciting events happening at NaUKMA! Our site offers a
@@ -101,22 +105,22 @@ const Main = () => {
           </div>
         </div>
       </section>
-      <section className={s["section-6-copy wf-section"]}>
+      <section className={`${s["section-6-copy"]} ${s["wf-section"]}`}>
         <div>
-          <div className={s["w-layout-grid grid-3-copy"]}>
+          <div className={`${s["w-layout-grid"]} ${s["grid-3-copy"]}`}>
             <div
               id={s["w-node-f5a8ed81-d1d8-577e-3b80-5e7af2776b56-442f355a"]}
-              className={s["container-12-copy w-container"]}
+              className={`${s["container-12-copy"]} ${s["w-container"]}`}
             >
               <h1
                 id={s["w-node-f5a8ed81-d1d8-577e-3b80-5e7af2776b57-442f355a"]}
-                className={s["heading-5-copy"]}
+                className={`${s["heading-5-copy"]}`}
               >
                 Explore The Events
               </h1>
               <p
                 id={s["w-node-f5a8ed81-d1d8-577e-3b80-5e7af2776b59-442f355a"]}
-                className={s["paragraph-5-copy"]}
+                className={`${s["paragraph-5-copy"]}`}
               >
                 Event Manager is designed to provide you with a convenient and
                 user-friendly platform to stay updated on the vibrant event
@@ -128,7 +132,7 @@ const Main = () => {
             </div>
             <div
               id={s["w-node-f5a8ed81-d1d8-577e-3b80-5e7af2776b54-442f355a"]}
-              className={s["container-11-copy w-container"]}
+              className={`${s["container-11-copy"]} ${s["w-container"]}`}
             >
               <img
                 src="https://uploads-ssl.webflow.com/647656c1558e6661a7504185/64787882ca359ee4f8294ca3_calendar-3981416-3297354.webp"
@@ -140,12 +144,12 @@ const Main = () => {
           </div>
         </div>
       </section>
-      <section className={s["section-6-copy-copy wf-section"]}>
+      <section className={`${s["section-6-copy-copy"]} ${s["wf-section"]}`}>
         <div>
-          <div className={s["w-layout-grid grid-3"]}>
+          <div className={`${s["w-layout-grid"]} ${s["grid-3"]}`}>
             <div
               id={s["w-node-aa6d8bb2-ad5b-fdcd-8850-1461a33fcad4-442f355a"]}
-              className={s["container-11 w-container"]}
+              className={`${s["container-11"]} ${s["w-container"]}`}
             >
               <img
                 src="https://uploads-ssl.webflow.com/647656c1558e6661a7504185/647878825dc322b03d531496_feedback-message-3981418-3297356.webp"
@@ -155,17 +159,17 @@ const Main = () => {
             </div>
             <div
               id={s["w-node-aa6d8bb2-ad5b-fdcd-8850-1461a33fcad6-442f355a"]}
-              className={s["container-12 w-container"]}
+              className={`${s["container-12"]} ${s["w-container"]}`}
             >
               <h1
                 id={s["w-node-aa6d8bb2-ad5b-fdcd-8850-1461a33fcad7-442f355a"]}
-                className={s["heading-5"]}
+                className={`${s["heading-5"]}`}
               >
                 Express Your Opinion
               </h1>
               <p
                 id={s["w-node-aa6d8bb2-ad5b-fdcd-8850-1461a33fcad9-442f355a"]}
-                className={s["paragraph-5"]}
+                className={`${s["paragraph-5"]}`}
               >
                 We understand the importance of feedback, which is why we
                 encourage everyone to share their thoughts and experiences. By
@@ -178,13 +182,13 @@ const Main = () => {
           </div>
         </div>
       </section>
-      <section className={s["section-7 wf-section"]}>
-        <h1 className={s["heading-6"]}>
+      <section className={`${s["section-7"]} ${s["wf-section"]}`}>
+        <h1 className={`${s["heading-6"]}`}>
           Don&#x27;t miss out on any exciting occasion with Event Manager by
           your side!
         </h1>
-        <div className={s["w-container"]}>
-          <h1 className={s["heading-7"]}>©VabeTech 2023</h1>
+        <div className={`${s["w-container"]}`}>
+          <h1 className={`${s["heading-7"]}`}>©VabeTech 2023</h1>
         </div>
       </section>
       <script

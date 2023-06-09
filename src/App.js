@@ -1,7 +1,7 @@
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import "./App.css";
 
-import Authorization from "./auth/Authorization";
+import Authorization from "./auth/auth";
 import Main from "./main/main";
 import FullCalendar from "./fullcalendar/fullcalendar";
 import SignUp from "./signup/signup";
