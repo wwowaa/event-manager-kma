@@ -2,14 +2,14 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import WebFont from "webfontloader";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import NotFound from "./NotFound";
-import Authorization from "./auth/auth-p";
-import Main from "./main/main-p";
-import FullCalendar from "./fullcalendar/fullcalendar-p";
-import SignUp from "./signup/signup-p";
-import PassReset1 from "./passreset1/passreset1-p";
-import PassReset2 from "./passreset2/passreset2-p";
-import Event from "./event/event-p";
+import NotFound from "./App/pages/NotFound";
+import Authorization from "./App/pages/auth/auth-p";
+import Main from "./App/pages/main/main-p";
+import FullCalendar from "./App/pages/fullcalendar/fullcalendar-p";
+import SignUp from "./App/pages/signup/signup-p";
+import PassReset1 from "./App/pages/passreset1/passreset1-p";
+import PassReset2 from "./App/pages/passreset2/passreset2-p";
+import Event from "./App/pages/event/event-p";
 
 import "./App.css";
 
