@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +69,38 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+=======
+# Event Manager for NaUKMA students
+
+## Опис
+
+Даний проект розроблений з використанням MERN-стеку, який включає MongoDB, Express.js, React.js та Node.js. 
+Він дозволяє студентам Національного університету "Києво-Могилянська академія" отримувати інформацію про різноманітні заходи, що організовуються різними студентськими організаціями, а також залишати власні враження від минулих заходів.
+
+## Інструкція налаштувань середовища розробки
+
+0. Перед розробкою проекту потрібно встановити такий інструментарій:
+- Node.js: https://nodejs.org/uk (бажано поточну LTS-версію 18.16.0)
+- MongoDB: https://www.mongodb.com/docs/manual/installation/ (бажано версію 6.0)
+- Git: https://git-scm.com
+- Visual Studio Code IDE: https://code.visualstudio.com/
+
+1. Перед запуском проекту потрібно завантажити всі використовувані модулі, вказані в проекті:
+
+    $ npm install
+
+2. У окремому встановленому додатку для MongoDB потрібно створити базу даних.
+
+3. Запускати сервер потрібно таким чином:
+
+    $ npm start
+
+4. Після запуску серверу, коли код виконується, потрібно зайти на адресу "http://localhost:[номер вказаного порта в коді]".
+
+## Допомога
+
+У разі виникнення питань можна звернутись до розробників за їх поштою:
+- Єгор: yehor.kyrylin@ukma.edu.ua
+- Андрій: andrii.chernikov@ukma.edu.ua
+- Богдан: bohdan.buchok@ukma.edu.ua
+>>>>>>> 734ea10afbef059f87774b0d5fb3861c53bdbeab
