@@ -93,7 +93,7 @@ const Authorization = () => {
       </section>
       <section className={`${s["section-4"]} ${s["wf-section"]}`}>
         <div className={`${s["container-5"]} ${s["w-container"]}`}>
-          <a href="./passreset1.html">Forgot your password?</a>
+          <Link href="./passreset1.html">Forgot your password?</Link>
         </div>
       </section>
       <section className={`${s["section-3"]} ${s["wf-section"]}`}>

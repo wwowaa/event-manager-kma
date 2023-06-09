@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import s from "./fullcalendar.module.css";
 
 const FullCalendar = () => {
@@ -34,9 +36,9 @@ const FullCalendar = () => {
                 <div className={`${s["text-block"]}`}>USERNAME</div>
               </div>
               <nav className={`${s["w-dropdown-list"]}`}>
-                <a href="./auth.html" className={`${s["w-dropdown-link"]}`}>
+                <Link href="./auth.html" className={`${s["w-dropdown-link"]}`}>
                   Sign Out
-                </a>
+                </Link>
               </nav>
             </div>
           </div>
@@ -54,12 +56,12 @@ const FullCalendar = () => {
       </section>
       <section className={`${s["section-5"]} ${s["wf-section"]}`}>
         <div className={`${s["container-10"]} ${s["w-container"]}`}>
-          <a
+          <Link
             href="./mainpage.html"
             className={`${s["button-2"]} ${s["w-button"]}`}
           >
             BACK
-          </a>
+          </Link>
         </div>
       </section>
       <section className={`${s["section-7"]} ${s["wf-section"]}`}>

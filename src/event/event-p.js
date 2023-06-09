@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import s from "./event.module.css";
 
 const Event = () => {
@@ -78,25 +80,25 @@ const Event = () => {
             id={s["w-node-_92111368-c205-f514-14e9-074c3d5db14a-442f355a"]}
             className={`${s["w-container"]}`}
           >
-            <a
+            <Link
+              className={`${s["button"]} ${s["w-button"]} ${s["w--current"]}`}
               href="./mainpage.html"
               aria-current="page"
-              className={`${s["button"]} ${s["w-button"]} ${s["w--current"]}`}
             >
               REMIND ME
-            </a>
+            </Link>
           </div>
           <div
             id={s["w-node-_92111368-c205-f514-14e9-074c3d5db14d-442f355a"]}
             className={`${s["w-container"]}`}
           >
-            <a
-              href="./mainpage.html"
+            <Link
               className={`${s["button-copy"]} ${s["w-button"]}`}
+              href="./mainpage.html"
             >
               {" "}
               BACK{" "}
-            </a>
+            </Link>
           </div>
         </div>
       </section>

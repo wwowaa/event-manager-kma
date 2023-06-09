@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import s from "./passreset2.module.css";
 
 const PassReset2 = () => {
@@ -127,12 +129,12 @@ const PassReset2 = () => {
           id={s["w-node-e338ce3f-f36d-760c-8337-1c162cb76e4a-a7504188"]}
           className={`${s["container-14"]} ${s["w-container"]}`}
         >
-          <a
+          <Link
             href="./mainpage.html"
             className={`${s["button-copy"]} ${s["w-button"]}`}
           >
             SUBMIT
-          </a>
+          </Link>
         </div>
       </section>
       <section className={`${s["section-3"]} ${s["wf-section"]}`}>

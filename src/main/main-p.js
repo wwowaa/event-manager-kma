@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import s from "./mainpage.module.css";
 
 const Main = () => {
@@ -34,9 +36,9 @@ const Main = () => {
                 <div className={`${s["text-block"]}`}>USERNAME</div>
               </div>
               <nav className={`${s["w-dropdown-list"]}`}>
-                <a href="./auth.html" className={`${s["w-dropdown-link"]}`}>
+                <Link href="./auth.html" className={`${s["w-dropdown-link"]}`}>
                   Sign Out
-                </a>
+                </Link>
               </nav>
             </div>
           </div>
@@ -58,12 +60,12 @@ const Main = () => {
       </section>
       <section className={`${s["section-5"]} ${s["wf-section"]}`}>
         <div className={`${s["container-10"]} ${s["w-container"]}`}>
-          <a
+          <Link
             href="./fullcalendar.html"
             className={`${s["button-2"]} ${s["w-button"]}`}
           >
             Full Calendar
-          </a>
+          </Link>
         </div>
       </section>
       <section className={`${s["section-6"]} ${s["wf-section"]}`}>
