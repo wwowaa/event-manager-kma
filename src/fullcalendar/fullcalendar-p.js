@@ -36,7 +36,7 @@ const FullCalendar = () => {
                 <div className={`${s["text-block"]}`}>USERNAME</div>
               </div>
               <nav className={`${s["w-dropdown-list"]}`}>
-                <Link href="./auth.html" className={`${s["w-dropdown-link"]}`}>
+                <Link to="../auth.html" className={`${s["w-dropdown-link"]}`}>
                   Sign Out
                 </Link>
               </nav>
@@ -57,7 +57,7 @@ const FullCalendar = () => {
       <section className={`${s["section-5"]} ${s["wf-section"]}`}>
         <div className={`${s["container-10"]} ${s["w-container"]}`}>
           <Link
-            href="./mainpage.html"
+            to="./mainpage.html"
             className={`${s["button-2"]} ${s["w-button"]}`}
           >
             BACK

@@ -130,7 +130,7 @@ const PassReset2 = () => {
           className={`${s["container-14"]} ${s["w-container"]}`}
         >
           <Link
-            href="./mainpage.html"
+            to="./mainpage.html"
             className={`${s["button-copy"]} ${s["w-button"]}`}
           >
             SUBMIT

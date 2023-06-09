@@ -83,7 +83,7 @@ const Authorization = () => {
             className={`${s["w-container"]}`}
           >
             <Link
-              to="./signup"
+              to="../signup"
               className={`${s["button-copy"]} ${s["w-button"]}`}
             >
               SIGN UP
@@ -93,7 +93,7 @@ const Authorization = () => {
       </section>
       <section className={`${s["section-4"]} ${s["wf-section"]}`}>
         <div className={`${s["container-5"]} ${s["w-container"]}`}>
-          <Link href="./passreset1.html">Forgot your password?</Link>
+          <Link to="../passreset1.html">Forgot your password?</Link>
         </div>
       </section>
       <section className={`${s["section-3"]} ${s["wf-section"]}`}>
