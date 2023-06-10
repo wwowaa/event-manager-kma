@@ -703,6 +703,7 @@ textarea.w-select {
 }
 
 .w-container {
+  background-color: #8bc7ff;
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;

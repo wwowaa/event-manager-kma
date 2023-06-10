@@ -37,7 +37,7 @@ const Authorization = () => {
         <div className={`${s["container-4"]} ${s["w-container"]}`}>
           <div className={`${s["w-form"]}`}>
             <form
-              id={s["email-form"]}
+              id="sign-in form"
               name="email-form"
               data-name="Email Form"
               method="get"
@@ -84,14 +84,12 @@ const Authorization = () => {
       </section>
       <section className={`${s["section-2"]} ${s["wf-section"]}`}>
         <div className={`${s["w-layout-grid"]} ${s["grid"]}`}>
-          <div
-            id={s["w-node-_1f4b4022-35dc-bf16-9e9e-d0eca0176e70-a7504188"]}
-            className={`${s["w-container"]}`}
+          <button
+            form="sign-in form"
+            className={`${s["w-container"]} ${s["button"]} ${s["w-button"]}`}
           >
-            <Link to="../main" className={`${s["button"]} ${s["w-button"]}`}>
-              SIGN IN
-            </Link>
-          </div>
+            SIGN IN
+          </button>
           <div
             id={s["w-node-e338ce3f-f36d-760c-8337-1c162cb76e4a-a7504188"]}
             className={`${s["w-container"]}`}
