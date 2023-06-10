@@ -9,7 +9,7 @@ const Authorization = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("submitted");
+    console.log("sign-in form submitted");
   };
 
   return (

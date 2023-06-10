@@ -5,9 +5,14 @@ import s from "./signup.module.css";
 
 const SignUp = () => {
   const [name, setName] = useState("");
-  const [email1, setEmail1] = useState("");
-  const [email2, setEmail2] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmation, setConfirmation] = useState(""); //confirmation of password
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("sign-up form submitted");
+  };
 
   return (
     <div className={`${s["signUp"]}`}>
@@ -34,10 +39,12 @@ const SignUp = () => {
         <div className={`${s["container-4"]} ${s["w-container"]}`}>
           <div className={`${s["w-form"]}`}>
             <form
-              id={s["email-form"]}
-              name="email-form"
-              data-name="Email Form"
+              id="sign-up form"
+              name="sign-up form"
+              data-name="Sign-Up Form"
+              // todo is 'get' method correct here?
               method="get"
+              onSubmit={handleSubmit}
             >
               <label for="name-2" className={`${s["field-label"]}`}>
                 Username
@@ -51,8 +58,8 @@ const SignUp = () => {
                 placeholder=""
                 id={s["email-2"]}
                 required=""
-                value={email2}
-                onChange={(e) => setEmail2(e.target.value)}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
               <label for="name" className={`${s["field-label"]}`}>
                 Email
@@ -65,8 +72,8 @@ const SignUp = () => {
                 data-name="Name"
                 placeholder=""
                 id={s["name"]}
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
               <label for="email" className={`${s["field-label-2"]}`}>
                 Password
@@ -80,8 +87,8 @@ const SignUp = () => {
                 placeholder=""
                 id={s["email"]}
                 required=""
-                value={email1}
-                onChange={(e) => setEmail1(e.target.value)}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <label for="email-3" className={`${s["field-label-2"]}`}>
                 Confirm The Password
@@ -95,8 +102,8 @@ const SignUp = () => {
                 placeholder=""
                 id={s["email-3"]}
                 required=""
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={confirmation}
+                onChange={(e) => setConfirmation(e.target.value)}
               />
             </form>
             <div className={`${s["w-form-done"]}`}>
@@ -108,18 +115,15 @@ const SignUp = () => {
           </div>
         </div>
       </section>
-      <section className={`${s["section-2"]} ${s["wf-section"]}`}>
-        <div
-          id={s["w-node-e338ce3f-f36d-760c-8337-1c162cb76e4a-a7504188"]}
-          className={`${s["container-14"]} ${s["w-container"]}`}
+      <section
+        className={`${s["section-2"]} ${s["wf-section"]} ${s["w-container"]}`}
+      >
+        <button
+          form="sign-up form"
+          className={`${s["w-container"]} ${s["button-copy"]} ${s["w-button"]}`}
         >
-          <Link
-            to="./mainpage.html"
-            className={`${s["button-copy"]} ${s["w-button"]}`}
-          >
-            SIGN UP
-          </Link>
-        </div>
+          SIGN UP
+        </button>
       </section>
       <section className={`${s["section-3"]} ${s["wf-section"]}`}>
         <div className={`${s["container-6"]} ${s["w-container"]}`}>

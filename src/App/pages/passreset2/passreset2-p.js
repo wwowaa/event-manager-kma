@@ -1,8 +1,20 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import s from "./passreset2.module.css";
 
 const PassReset2 = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [validationCode, setValidationCode] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmation, setConfirmation] = useState(""); //confirmation of password
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("sign-up form submitted");
+  };
+
   return (
     <div className={`${s["passreset2"]}`}>
       <section className={`${s["wf-section"]}`}>
@@ -32,6 +44,7 @@ const PassReset2 = () => {
               name="email-form"
               data-name="Email Form"
               method="get"
+              onSubmit={handleSubmit}
             >
               <label for="name-2" className={`${s["field-label"]}`}>
                 Username
@@ -45,6 +58,8 @@ const PassReset2 = () => {
                 placeholder=""
                 id={s["email-2"]}
                 required=""
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
               <label for="name-2" className={`${s["field-label"]}`}>
                 Email
@@ -57,6 +72,8 @@ const PassReset2 = () => {
                 data-name="Name 2"
                 placeholder=""
                 id={s["name-2"]}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </form>
             <div className={`${s["w-form-done"]}`}>
@@ -76,6 +93,7 @@ const PassReset2 = () => {
               name="email-form"
               data-name="Email Form"
               method="get"
+              onSubmit={handleSubmit}
             >
               <label for="name-2" className={`${s["field-label"]}`}>
                 Validation Code
@@ -89,6 +107,8 @@ const PassReset2 = () => {
                 placeholder=""
                 id={s["email-2"]}
                 required=""
+                value={validationCode}
+                onChange={(e) => setValidationCode(e.target.value)}
               />
               <label for="name" className={`${s["field-label"]}`}>
                 Password
@@ -101,6 +121,8 @@ const PassReset2 = () => {
                 data-name="Name"
                 placeholder=""
                 id={s["name"]}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <label for="name-3" className={`${s["field-label"]}`}>
                 Confirm Your Password
@@ -113,6 +135,8 @@ const PassReset2 = () => {
                 data-name="Name 3"
                 placeholder=""
                 id={s["name-3"]}
+                value={confirmation}
+                onChange={(e) => setConfirmation(e.target.value)}
               />
             </form>
             <div className={`${s["w-form-done"]}`}>

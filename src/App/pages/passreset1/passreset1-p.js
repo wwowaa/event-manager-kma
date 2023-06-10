@@ -1,8 +1,20 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 import s from "./passreset1.module.css";
 
 const PassReset1 = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [validationCode, setValidationCode] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmation, setConfirmation] = useState(""); //confirmation of password
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("sign-up form submitted");
+  };
+
   return (
     <div className={`${s["passreset1"]}`}>
       <section className={`${s["wf-section"]}`}>
@@ -32,6 +44,7 @@ const PassReset1 = () => {
               name="email-form"
               data-name="Email Form"
               method="get"
+              onSubmit={handleSubmit}
             >
               <label for="name-2" className={`${s["field-label"]}`}>
                 Username
@@ -45,6 +58,8 @@ const PassReset1 = () => {
                 placeholder=""
                 id={s["email-2"]}
                 required=""
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
               <label for="name" className={`${s["field-label"]}`}>
                 Email
@@ -57,6 +72,8 @@ const PassReset1 = () => {
                 data-name="Name"
                 placeholder=""
                 id={s["name"]}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </form>
             <div className={`${s["w-form-done"]}`}>
