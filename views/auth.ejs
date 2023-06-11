@@ -40,25 +40,21 @@
     </section>
     <section class="wf-section">
         <div class="container-4 w-container">
-            <div class="w-form">
-                <form id="email-form" name="email-form" data-name="Email Form" method="get"><label for="name"
-                        class="field-label">Email</label><input type="text" class="w-input" maxlength="256" name="name"
-                        data-name="Name" placeholder="" id="name" /><label for="email"
-                        class="field-label-2">Password</label><input type="email" class="w-input" maxlength="256"
-                        name="email" data-name="Email" placeholder="" id="email" required="" /></form>
-                <div class="w-form-done">
-                    <div>Thank you! Your submission has been received!</div>
+            <form id="signup-form">
+                <label for="email" class="field-label">Email</label>
+                <input type="text" class="w-input" maxlength="256" name="email" data-name="email" placeholder="" id="email" required/>
+                <div class="email error"></div>
+                <label for="password" class="field-label">Password</label>
+                <input type="password" class="w-input" maxlength="256" name="password" data-name="password" placeholder="" id="password" required/>
+                <div class="password error"></div>
+                <div id="w-node-_1f4b4022-35dc-bf16-9e9e-d0eca0176e70-a7504188" class="w-container">
+                    <button type="submit" class="button-copy w-button">SIGN IN</button>
                 </div>
-                <div class="w-form-fail">
-                    <div>Oops! Something went wrong while submitting the form.</div>
-                </div>
-            </div>
-        </div>
+            </form>
+    </div>
     </section>
     <section class="section-2 wf-section">
         <div class="w-layout-grid grid">
-            <div id="w-node-_1f4b4022-35dc-bf16-9e9e-d0eca0176e70-a7504188" class="w-container"><a href="/mainpage"
-                    class="button w-button">SIGN IN</a></div>
             <div id="w-node-e338ce3f-f36d-760c-8337-1c162cb76e4a-a7504188" class="w-container"><a href="/signup"
                     class="button-copy w-button">SIGN UP</a></div>
         </div>
@@ -76,6 +72,44 @@
         crossorigin="anonymous"></script>
     <script src="js/auth.js"
         type="text/javascript"></script>
+        <script>
+            const form = document.querySelector('#signup-form');
+            const emailError = document.querySelector('.email.error');
+            const passwordError = document.querySelector('.password.error');
+            
+    
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+    
+                //reset errors
+                emailError.textContent = '';
+                passwordError.textContent = '';
+    
+    
+                const email = form.email.value;
+                const password = form.password.value;
+    
+                try {
+                    const res = await fetch('/auth', {
+                        method: 'POST', 
+                        body: JSON.stringify({ email, password }),
+                        headers: {'Content-Type': 'application/json' }
+                    });
+                    const data = await res.json();
+                    console.log(data);
+                    if (data.errors) {
+                        emailError.textContent = data.errors.email;
+                        passwordError.textContent = data.errors.password;
+                    }
+                    if (data.user) {
+                        location.assign('/mainpage')
+                    }
+                }
+                catch (err) {
+                    console.log(err);
+                }
+            });
+        </script>
 </body>
 
 </html>

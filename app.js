@@ -1,49 +1,55 @@
 //imports
-const express = require('express')
-const app = express()
+const express = require('express');
+const mongoose = require('mongoose');
+const authRoutes = require('./routes/authRoutes');
+const cookieParser = require('cookie-parser');
+const { requireAuth, checkUser } = require('./middleware/authMiddleware'); 
+
+const app = express();
 const port = 3000
 
-//Static files
-app.use(express.static('public'))
-app.use('/css', express.static(__dirname + 'public/css'))
-app.use('/js', express.static(__dirname + 'public/js'))
+//view-engine
+app.use(express.static('public'));
+app.use('/css', express.static(__dirname + 'public/css'));
+app.use('/js', express.static(__dirname + 'public/js'));
+app.use(cookieParser());
+
+//middleware
+app.use(express.json());
 
 //Set views
-app.set('views', './views')
-app.set('view engine', 'ejs')
+app.set('views', './views');
+app.set('view engine', 'ejs');
 
-app.get('', (req, res) => {
-    res.render('auth')
-})
+//Database connection
+const dbURI = 'mongodb+srv://andcher:12345@cluster0.rogypfm.mongodb.net/node-auth';
+mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true})
+    .then((result) => app.listen(port, () => console.info(`Listening on port ${port}`)))
+    .catch((err) => console.log(err));
 
-app.get('/event', (req, res) => {
-    res.render('event')
-})
 
-app.get('/fullcalendar', (req, res) => {
-    res.render('fullcalendar')
-})
+//Routes 
+app.get('*', checkUser);
 
-app.get('/mainpage', (req, res) => {
-    res.render('mainpage')
-})
+app.get('', (req, res) => res.render('auth'));
 
-app.get('/passreset1', (req, res) => {
-    res.render('passreset1')
-})
+app.get('/event', requireAuth, (req, res) => res.render('event'));
 
-app.get('/passreset2', (req, res) => {
-    res.render('passreset2')
-})
+app.get('/fullcalendar', requireAuth, (req, res) => res.render('fullcalendar'));
 
-app.get('/signup', (req, res) => {
-    res.render('signup')
-})
+app.get('/mainpage', requireAuth, (req, res) => res.render('mainpage'));
 
-app.get('/auth', (req, res) => {
-    res.render('auth')
-})
+app.get('/passreset1', (req, res) => res.render('passreset1'));
+
+app.get('/passreset2', (req, res) => res.render('passreset2'));
+
+app.get('/signup', (req, res) => res.render('signup'));
+
+app.get('/auth', (req, res) => res.render('auth'));
+
+app.use(authRoutes);
+
 
 
 // Listen on port 
-app.listen(port, () => console.info(`Listening on port ${port}`))
+//app.listen(port, () => console.info(`Listening on port ${port}`)); 
