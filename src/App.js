@@ -3,7 +3,7 @@ import WebFont from "webfontloader";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import NotFound from "./App/pages/NotFound";
-import Authorization from "./App/pages/auth/auth-p";
+import Auth from "./App/pages/auth/auth-p";
 import Main from "./App/pages/main/main-p";
 import FullCalendar from "./App/pages/fullcalendar/fullcalendar-p";
 import SignUp from "./App/pages/signup/signup-p";
@@ -72,7 +72,7 @@ function App() {
       </HelmetProvider>
       <Router>
         <Routes>
-          <Route path="auth" element={<Authorization />} />
+          <Route path="auth" element={<Auth />} />
           <Route path="main" element={<Main />} />
           <Route path="event" element={<Event />} />
           <Route path="fullcalendar" element={<FullCalendar />} />
