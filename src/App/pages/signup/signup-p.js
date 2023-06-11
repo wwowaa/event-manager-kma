@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 
 import s from "./signup.module.css";
@@ -8,6 +8,24 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmation, setConfirmation] = useState(""); //confirmation of password
+
+  const loginRef = useRef();
+  const errRef = useRef();
+
+  const [login, setLogin] = useState("");
+  const [validLogin, setValidLogin] = useState(false);
+  const [loginFocus, setLoginFocus] = useState(false);
+
+  const [pwd, setPwd] = useState("");
+  const [validPwd, setValidPwd] = useState(false);
+  const [pwdFocus, setPwdFocus] = useState(false);
+
+  const [pwdMatch, setPwdMatch] = useState("");
+  const [validPwdMatch, setValidPwdMatch] = useState(false);
+  const [pwdMatchFocus, setPwdMatchFocus] = useState(false);
+
+  const [errMsg, setErrMsg] = useState("");
+  const [success, setSuccess] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();

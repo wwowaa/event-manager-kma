@@ -33,7 +33,7 @@ const Auth = () => {
   });
 
   useEffect(() => {
-    const result = login_REGEX.test(login);
+    const result = LOGIN_REGEX.test(login);
     console.log(result);
     console.log(login);
     setValidLogin(result);
