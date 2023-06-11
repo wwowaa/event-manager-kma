@@ -53,6 +53,7 @@ const Auth = () => {
       setErrMsg("Invalid Entry");
       return;
     }
+    // TODO: remove console.logs before deployment
     // try {
     //     const response = await axios.post(REGISTER_URL,
     //         JSON.stringify({ user, pwd }),
