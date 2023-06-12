@@ -10,8 +10,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import s from "./auth.module.css";
 
-const LOGIN_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
-const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+// const LOGIN_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
+const LOGIN_REGEX =
+  /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+// const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+const PWD_REGEX = /.*/;
 
 const Auth = () => {
   const navigate = useNavigate();
@@ -20,26 +23,13 @@ const Auth = () => {
   const errRef = useRef();
 
   const [login, setLogin] = useState("");
-  const [validLogin, setValidLogin] = useState(false);
-  const [loginFocus, setLoginFocus] = useState(false);
-
   const [pwd, setPwd] = useState("");
-  const [validPwd, setValidPwd] = useState(false);
-  const [pwdFocus, setPwdFocus] = useState(false);
 
   const [errMsg, setErrMsg] = useState("");
-  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     loginRef.current.focus();
   });
-
-  useEffect(() => {
-    const result = LOGIN_REGEX.test(login);
-    console.log(result);
-    console.log(login);
-    setValidLogin(result);
-  }, [login]);
 
   useEffect(() => {
     setErrMsg("");
@@ -49,21 +39,13 @@ const Auth = () => {
     e.preventDefault();
     console.log("sign-in form submitted");
 
-    const v1 = LOGIN_REGEX.test(login);
-    const v2 = PWD_REGEX.test(pwd);
-    if (!v1 || !v2) {
-      setErrMsg("Invalid Entry");
-      return;
-    }
-
     try {
-      const res = await fetch("/auth", {
+      const res = await fetch("http://localhost:3000/auth", {
         method: "POST",
         body: JSON.stringify({ login, pwd }),
         headers: { "Content-Type": "application/json" },
       });
       const data = await res.json();
-      setSuccess(true);
 
       if (data.user) {
         navigate("../main");
@@ -104,87 +86,55 @@ const Auth = () => {
       </section>
       <section className={`${s["wf-section"]}`}>
         <div className={`${s["container-4"]} ${s["w-container"]}`}>
-          {success ? (
-            <section>
-              <h1>Success!</h1>
-              <p>
-                <a href="#">Sign In</a>
-              </p>
-            </section>
-          ) : (
-            <section className={s.test}>
-              <p
-                ref={errRef}
-                className={errMsg ? "errmsg" : "offscreen"}
-                aria-live="assertive"
+          <section className={s.test}>
+            <p
+              ref={errRef}
+              className={errMsg ? "errmsg" : "offscreen"}
+              aria-live="assertive"
+            >
+              {errMsg}
+            </p>
+            <form onSubmit={handleSubmit} className={`${s["w-form"]}`}>
+              <label htmlFor="loginname" className={`${s["field-label"]}`}>
+                Username:
+              </label>
+              <input
+                className={`${s["w-input"]}`}
+                type="text"
+                id="loginname"
+                ref={loginRef}
+                autoComplete="off"
+                onChange={(e) => setLogin(e.target.value)}
+                value={login}
+                required
+                aria-describedby="uidnote"
+              />
+              <label htmlFor="password" className={`${s["field-label"]}`}>
+                Password:
+              </label>
+              <input
+                className={`${s["w-input"]}`}
+                type="password"
+                id="password"
+                onChange={(e) => setPwd(e.target.value)}
+                value={pwd}
+                required
+                aria-describedby="pwdnote"
+              />
+              <button
+                className={`${s["w-container"]} ${s["button"]} ${s["w-button"]}`}
               >
-                {errMsg}
-              </p>
-              <form onSubmit={handleSubmit} className={`${s["w-form"]}`}>
-                <label htmlFor="loginname" className={`${s["field-label"]}`}>
-                  Username:
-                  <FontAwesomeIcon
-                    icon={faCheck}
-                    className={validLogin ? "valid" : "hide"}
-                  />
-                  <FontAwesomeIcon
-                    icon={faTimes}
-                    className={validLogin || !login ? "hide" : "invalid"}
-                  />
-                </label>
-                <input
-                  className={`${s["w-input"]}`}
-                  type="text"
-                  id="loginname"
-                  ref={loginRef}
-                  autoComplete="off"
-                  onChange={(e) => setLogin(e.target.value)}
-                  value={login}
-                  required
-                  aria-invalid={validLogin ? "false" : "true"}
-                  aria-describedby="uidnote"
-                  onFocus={() => setLoginFocus(true)}
-                  onBlur={() => setLoginFocus(false)}
-                />
-                <label htmlFor="password" className={`${s["field-label"]}`}>
-                  Password:
-                  <FontAwesomeIcon
-                    icon={faCheck}
-                    className={validPwd ? "valid" : "hide"}
-                  />
-                  <FontAwesomeIcon
-                    icon={faTimes}
-                    className={validPwd || !pwd ? "hide" : "invalid"}
-                  />
-                </label>
-                <input
-                  className={`${s["w-input"]}`}
-                  type="password"
-                  id="password"
-                  onChange={(e) => setPwd(e.target.value)}
-                  value={pwd}
-                  required
-                  aria-invalid={validPwd ? "false" : "true"}
-                  aria-describedby="pwdnote"
-                  onFocus={() => setPwdFocus(true)}
-                  onBlur={() => setPwdFocus(false)}
-                />
-                <button
-                  className={`${s["w-container"]} ${s["button"]} ${s["w-button"]}`}
-                  disabled={!validLogin || !validPwd ? true : false}
-                >
-                  Sign In
-                </button>
-              </form>
-              <p>
-                Not registred?
-                <br />
-                <span className="line">
-                  <Link to="../signup.html">Sign up</Link>
-                </span>
-              </p>
-            </section>
-          )}
+                Sign In
+              </button>
+            </form>
+            <p>
+              Not registred?
+              <br />
+              <span className="line">
+                <Link to="../signup.html">Sign up</Link>
+              </span>
+            </p>
+          </section>
         </div>
       </section>
       <section className={`${s["section-4"]} ${s["wf-section"]}`}>
@@ -209,44 +159,3 @@ const Auth = () => {
 };
 
 export default Auth;
-
-{
-  /* <script>
-            const form = document.querySelector('#signup-form');
-            const emailError = document.querySelector('.email.error');
-            const passwordError = document.querySelector('.password.error');
-            
-    
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-    
-                //reset errors
-                emailError.textContent = '';
-                passwordError.textContent = '';
-    
-    
-                const email = form.email.value;
-                const password = form.password.value;
-    
-                try {
-                    const res = await fetch('/auth', {
-                        method: 'POST', 
-                        body: JSON.stringify({ email, password }),
-                        headers: {'Content-Type': 'application/json' }
-                    });
-                    const data = await res.json();
-                    console.log(data);
-                    if (data.errors) {
-                        emailError.textContent = data.errors.email;
-                        passwordError.textContent = data.errors.password;
-                    }
-                    if (data.user) {
-                        location.assign('/mainpage')
-                    }
-                }
-                catch (err) {
-                    console.log(err);
-                }
-            });
-        </script> */
-}

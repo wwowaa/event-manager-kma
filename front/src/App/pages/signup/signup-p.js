@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import {
   faCheck,
@@ -14,6 +14,8 @@ const LOGIN_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 const SignUp = () => {
+  const navigate = useNavigate();
+
   const loginRef = useRef();
   const errRef = useRef();
 
@@ -30,7 +32,6 @@ const SignUp = () => {
   const [matchFocus, setMatchFocus] = useState(false);
 
   const [errMsg, setErrMsg] = useState("");
-  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     loginRef.current.focus();
@@ -49,61 +50,31 @@ const SignUp = () => {
     setErrMsg("");
   }, [login, pwd, matchPwd]);
 
-  const handleSubmit = (e) => {
-    // e.preventDefault();
-    // console.log("sign-in form submitted");
-    // const v1 = LOGIN_REGEX.test(login);
-    // const v2 = PWD_REGEX.test(pwd);
-    // if (!v1 || !v2) {
-    //   setErrMsg("Invalid Entry");
-    //   return;
-    // }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("sign-up form submitted");
+    const v1 = LOGIN_REGEX.test(login);
+    const v2 = PWD_REGEX.test(pwd);
+    if (!v1 || !v2) {
+      setErrMsg("Invalid Entry");
+      return;
+    }
+    try {
+      const res = await fetch("http://localhost:3000/signup", {
+        method: "POST",
+        body: JSON.stringify({ login, pwd, matchPwd }),
+        headers: { "Content-Type": "application/json" },
+      });
+      const data = await res.json();
+      console.log(data);
+
+      if (data.user) {
+        navigate("../main");
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
-
-  // <script>
-  //       const form = document.querySelector('#signup-form');
-  //       const usernameError = document.querySelector('.username.error');
-  //       const emailError = document.querySelector('.email.error');
-  //       const passwordError = document.querySelector('.password.error');
-  //       const confirmPasswordError = document.querySelector('.confirmPassword.error');
-
-  //       form.addEventListener('submit', async (e) => {
-  //           e.preventDefault();
-
-  //           //reset errors
-  //           usernameError.textContent = '';
-  //           emailError.textContent = '';
-  //           passwordError.textContent = '';
-  //           confirmPasswordError.textContent = '';
-
-  //           const username = form.username.value;
-  //           const email = form.email.value;
-  //           const password = form.password.value;
-  //           const confirmPassword = form.confirmPassword.value;
-
-  //           try {
-  //               const res = await fetch('/signup', {
-  //                   method: 'POST',
-  //                   body: JSON.stringify({ username, email, password, confirmPassword }),
-  //                   headers: {'Content-Type': 'application/json' }
-  //               });
-  //               const data = await res.json();
-  //               console.log(data);
-  //               if (data.errors) {
-  //                   usernameError.textContent = data.errors.username;
-  //                   emailError.textContent = data.errors.email;
-  //                   passwordError.textContent = data.errors.password;
-  //                   confirmPasswordError.textContent = data.errors.confirmPassword;
-  //               }
-  //               if (data.user) {
-  //                   location.assign('/mainpage')
-  //               }
-  //           }
-  //           catch (err) {
-  //               console.log(err);
-  //           }
-  //       });
-  //   </script>
 
   return (
     <div className={`${s["signUp"]}`}>
@@ -128,155 +99,137 @@ const SignUp = () => {
       </section>
       <section className={`${s["wf-section"]}`}>
         <div className={`${s["container-4"]} ${s["w-container"]}`}>
-          {success ? (
-            <section>
-              <h1>Success!</h1>
-              <p>
-                <a href="#">Sign In</a>
-              </p>
-            </section>
-          ) : (
-            <section className={s.test}>
+          <section className={s.test}>
+            <p
+              ref={errRef}
+              className={errMsg ? "errmsg" : "offscreen"}
+              aria-live="assertive"
+            >
+              {errMsg}
+            </p>
+            <form onSubmit={handleSubmit} className={`${s["w-form"]}`}>
+              <label htmlFor="loginname" className={`${s["field-label"]}`}>
+                Username:
+                <FontAwesomeIcon
+                  icon={faCheck}
+                  className={validLogin ? "valid" : "hide"}
+                />
+                <FontAwesomeIcon
+                  icon={faTimes}
+                  className={validLogin || !login ? "hide" : "invalid"}
+                />
+              </label>
+              <input
+                className={`${s["w-input"]}`}
+                type="text"
+                id="loginname"
+                ref={loginRef}
+                autoComplete="off"
+                onChange={(e) => setLogin(e.target.value)}
+                value={login}
+                required
+                aria-invalid={validLogin ? "false" : "true"}
+                aria-describedby="uidnote"
+                onFocus={() => setLoginFocus(true)}
+                onBlur={() => setLoginFocus(false)}
+              />
               <p
-                ref={errRef}
-                className={errMsg ? "errmsg" : "offscreen"}
-                aria-live="assertive"
+                id="uidnote"
+                className={
+                  loginFocus && login && !validLogin
+                    ? "instructions"
+                    : "offscreen"
+                }
               >
-                {errMsg}
-              </p>
-              <form onSubmit={handleSubmit} className={`${s["w-form"]}`}>
-                <label htmlFor="loginname" className={`${s["field-label"]}`}>
-                  Username:
-                  <FontAwesomeIcon
-                    icon={faCheck}
-                    className={validLogin ? "valid" : "hide"}
-                  />
-                  <FontAwesomeIcon
-                    icon={faTimes}
-                    className={validLogin || !login ? "hide" : "invalid"}
-                  />
-                </label>
-                <input
-                  className={`${s["w-input"]}`}
-                  type="text"
-                  id="loginname"
-                  ref={loginRef}
-                  autoComplete="off"
-                  onChange={(e) => setLogin(e.target.value)}
-                  value={login}
-                  required
-                  aria-invalid={validLogin ? "false" : "true"}
-                  aria-describedby="uidnote"
-                  onFocus={() => setLoginFocus(true)}
-                  onBlur={() => setLoginFocus(false)}
-                />
-                <p
-                  id="uidnote"
-                  className={
-                    loginFocus && login && !validLogin
-                      ? "instructions"
-                      : "offscreen"
-                  }
-                >
-                  <FontAwesomeIcon icon={faInfoCircle} />
-                  4 to 24 characters.
-                  <br />
-                  Must begin with a letter.
-                  <br />
-                  Letters, numbers, underscores, hyphens allowed.
-                </p>
-                <label htmlFor="password" className={`${s["field-label"]}`}>
-                  Password:
-                  <FontAwesomeIcon
-                    icon={faCheck}
-                    className={validPwd ? "valid" : "hide"}
-                  />
-                  <FontAwesomeIcon
-                    icon={faTimes}
-                    className={validPwd || !pwd ? "hide" : "invalid"}
-                  />
-                </label>
-                <input
-                  className={`${s["w-input"]}`}
-                  type="password"
-                  id="password"
-                  onChange={(e) => setPwd(e.target.value)}
-                  value={pwd}
-                  required
-                  aria-invalid={validPwd ? "false" : "true"}
-                  aria-describedby="pwdnote"
-                  onFocus={() => setPwdFocus(true)}
-                  onBlur={() => setPwdFocus(false)}
-                />
-                <p
-                  id="pwdnote"
-                  className={
-                    pwdFocus && !validPwd ? "instructions" : "offscreen"
-                  }
-                >
-                  <FontAwesomeIcon icon={faInfoCircle} />
-                  8 to 24 characters.
-                  <br />
-                  Must include uppercase and lowercase letters, a number and a
-                  special character.
-                  <br />
-                  Allowed special characters:{" "}
-                  <span aria-label="exclamation mark">!</span>{" "}
-                  <span aria-label="at symbol">@</span>{" "}
-                  <span aria-label="hashtag">#</span>{" "}
-                  <span aria-label="dollar sign">$</span>{" "}
-                  <span aria-label="percent">%</span>
-                </p>
-
-                <label className={`${s["field-label"]}`} htmlFor="confirm_pwd">
-                  Confirm Password:
-                  <FontAwesomeIcon
-                    icon={faCheck}
-                    className={validMatch && matchPwd ? "valid" : "hide"}
-                  />
-                  <FontAwesomeIcon
-                    icon={faTimes}
-                    className={validMatch || !matchPwd ? "hide" : "invalid"}
-                  />
-                </label>
-                <input
-                  className={`${s["w-input"]}`}
-                  type="password"
-                  id="confirm_pwd"
-                  onChange={(e) => setMatchPwd(e.target.value)}
-                  value={matchPwd}
-                  required
-                  aria-invalid={validMatch ? "false" : "true"}
-                  aria-describedby="confirmnote"
-                  onFocus={() => setMatchFocus(true)}
-                  onBlur={() => setMatchFocus(false)}
-                />
-                <p
-                  id="confirmnote"
-                  className={
-                    matchFocus && !validMatch ? "instructions" : "offscreen"
-                  }
-                >
-                  <FontAwesomeIcon icon={faInfoCircle} />
-                  Must match the first password input field.
-                </p>
-
-                <button
-                  className={`${s["w-container"]} ${s["button"]} ${s["w-button"]}`}
-                  disabled={!validLogin || !validPwd ? true : false}
-                >
-                  Sign Up
-                </button>
-              </form>
-              <p>
-                Already have an account?
+                <FontAwesomeIcon icon={faInfoCircle} />
+                4 to 24 characters.
                 <br />
-                <span className="line">
-                  <Link to="../auth.html">Sign in</Link>
-                </span>
+                Must begin with a letter.
+                <br />
+                Letters, numbers, underscores, hyphens allowed.
               </p>
-            </section>
-          )}
+              <label htmlFor="password" className={`${s["field-label"]}`}>
+                Password:
+                <FontAwesomeIcon
+                  icon={faCheck}
+                  className={validPwd ? "valid" : "hide"}
+                />
+                <FontAwesomeIcon
+                  icon={faTimes}
+                  className={validPwd || !pwd ? "hide" : "invalid"}
+                />
+              </label>
+              <input
+                className={`${s["w-input"]}`}
+                type="password"
+                id="password"
+                onChange={(e) => setPwd(e.target.value)}
+                value={pwd}
+                required
+                aria-invalid={validPwd ? "false" : "true"}
+                aria-describedby="pwdnote"
+                onFocus={() => setPwdFocus(true)}
+                onBlur={() => setPwdFocus(false)}
+              />
+              <p
+                id="pwdnote"
+                className={pwdFocus && !validPwd ? "instructions" : "offscreen"}
+              >
+                <FontAwesomeIcon icon={faInfoCircle} />
+                8 to 24 characters.
+                <br />
+                Must include uppercase and lowercase letters, a number and a
+                special character.
+                <br />
+                Allowed special characters:{" "}
+                <span aria-label="exclamation mark">!</span>{" "}
+                <span aria-label="at symbol">@</span>{" "}
+                <span aria-label="hashtag">#</span>{" "}
+                <span aria-label="dollar sign">$</span>{" "}
+                <span aria-label="percent">%</span>
+              </p>
+
+              <label className={`${s["field-label"]}`} htmlFor="confirm_pwd">
+                Confirm Password:
+                <FontAwesomeIcon
+                  icon={faCheck}
+                  className={validMatch && matchPwd ? "valid" : "hide"}
+                />
+                <FontAwesomeIcon
+                  icon={faTimes}
+                  className={validMatch || !matchPwd ? "hide" : "invalid"}
+                />
+              </label>
+              <input
+                className={`${s["w-input"]}`}
+                type="password"
+                id="confirm_pwd"
+                onChange={(e) => setMatchPwd(e.target.value)}
+                value={matchPwd}
+                required
+                aria-invalid={validMatch ? "false" : "true"}
+                aria-describedby="confirmnote"
+                onFocus={() => setMatchFocus(true)}
+                onBlur={() => setMatchFocus(false)}
+              />
+              <p
+                id="confirmnote"
+                className={
+                  matchFocus && !validMatch ? "instructions" : "offscreen"
+                }
+              >
+                <FontAwesomeIcon icon={faInfoCircle} />
+                Must match the first password input field.
+              </p>
+
+              <button
+                className={`${s["w-container"]} ${s["button"]} ${s["w-button"]}`}
+                disabled={!validLogin || !validPwd ? true : false}
+              >
+                Sign Up
+              </button>
+            </form>
+          </section>
         </div>
       </section>
       <section className={`${s["section-3"]} ${s["wf-section"]}`}>
