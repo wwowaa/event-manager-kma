@@ -1,20 +1,7 @@
 import { useState, useEffect, useRef } from "react";
-
 import { Link, useNavigate } from "react-router-dom";
-import {
-  faCheck,
-  faTimes,
-  faInfoCircle,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import s from "./auth.module.css";
-
-// const LOGIN_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
-const LOGIN_REGEX =
-  /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-// const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const PWD_REGEX = /.*/;
 
 const Auth = () => {
   const navigate = useNavigate();
@@ -39,13 +26,21 @@ const Auth = () => {
     e.preventDefault();
     console.log("sign-in form submitted");
 
+    console.log(login);
+    console.log(pwd);
+
+    const email = login;
+    const password = pwd;
+
     try {
       const res = await fetch("http://localhost:3000/auth", {
         method: "POST",
-        body: JSON.stringify({ login, pwd }),
+        body: JSON.stringify({ email, password }),
         headers: { "Content-Type": "application/json" },
       });
+      console.log(res);
       const data = await res.json();
+      console.log(data);
 
       if (data.user) {
         navigate("../main");
@@ -151,7 +146,7 @@ const Auth = () => {
         src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=647656c1558e6661a7504185"
         type="text/javascript"
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-        crossorigin="anonymous"
+        crossOrigin="anonymous"
       ></script>
       <script src="./auth.js" type="text/javascript"></script>
     </div>
