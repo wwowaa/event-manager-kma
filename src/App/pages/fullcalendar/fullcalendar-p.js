@@ -1,8 +1,13 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+
+import MyCalendar from "../../comps/views/calendar";
 
 import s from "./fullcalendar.module.css";
 
 const FullCalendar = () => {
+  const [date, setDate] = useState(new Date());
+
   return (
     <div className={`${s["fullcalendar"]}`}>
       <section className={`${s["wf-section"]}`}>
@@ -51,7 +56,7 @@ const FullCalendar = () => {
       </section>
       <section className={`${s["wf-section"]}`}>
         <div className={`${s["container-9"]} ${s["w-container"]}`}>
-          <p className={`${s["paragraph-3"]}`}>Calendar Placeholder</p>
+          <MyCalendar />
         </div>
       </section>
       <section className={`${s["section-5"]} ${s["wf-section"]}`}>

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import s from "./mainpage.module.css";
 
-const Main = () => {
+const Main = ({ username }) => {
   return (
     <div className={s.main}>
       <section className={`${s["wf-section"]}`}>
@@ -33,7 +33,7 @@ const Main = () => {
                 className={`${s["dropdown-toggle"]} ${s["w-dropdown-toggle"]}`}
               >
                 <div className={`${s["w-icon-dropdown-toggle"]}`}></div>
-                <div className={`${s["text-block"]}`}>USERNAME</div>
+                <div className={`${s["text-block"]}`}>{username}</div>
               </div>
               <nav className={`${s["w-dropdown-list"]}`}>
                 <Link to="../auth.html" className={`${s["w-dropdown-link"]}`}>

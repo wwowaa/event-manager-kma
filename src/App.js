@@ -2,7 +2,7 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import WebFont from "webfontloader";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import NotFound from "./App/pages/NotFound";
+import NotFound from "./App/pages/supportive/NotFound";
 import Auth from "./App/pages/auth/auth-p";
 import Main from "./App/pages/main/main-p";
 import FullCalendar from "./App/pages/fullcalendar/fullcalendar-p";
@@ -44,21 +44,6 @@ function App() {
               },
             })}
           </script>
-
-          {/* 
-          <script type="text/javascript">
-            {
-              !(function (o, c) {
-                var n = c.documentElement,
-                  t = " w-mod-";
-                (n.className += t + "js"),
-                  ("ontouchstart" in o ||
-                    (o.DocumentTouch && c instanceof DocumentTouch)) &&
-                    (n.className += t + "touch");
-              })(window, document)
-            }
-          </script> */}
-
           <link
             href="https://uploads-ssl.webflow.com/img/favicon.ico"
             rel="shortcut icon"

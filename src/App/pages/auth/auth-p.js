@@ -148,21 +148,6 @@ const Auth = () => {
                   onFocus={() => setLoginFocus(true)}
                   onBlur={() => setLoginFocus(false)}
                 />
-                <p
-                  id="uidnote"
-                  className={
-                    loginFocus && login && !validLogin
-                      ? "instructions"
-                      : "offscreen"
-                  }
-                >
-                  <FontAwesomeIcon icon={faInfoCircle} />
-                  4 to 24 characters.
-                  <br />
-                  Must begin with a letter.
-                  <br />
-                  Letters, numbers, underscores, hyphens allowed.
-                </p>
                 <label htmlFor="password" className={`${s["field-label"]}`}>
                   Password:
                   <FontAwesomeIcon
@@ -186,25 +171,6 @@ const Auth = () => {
                   onFocus={() => setPwdFocus(true)}
                   onBlur={() => setPwdFocus(false)}
                 />
-                <p
-                  id="pwdnote"
-                  className={
-                    pwdFocus && !validPwd ? "instructions" : "offscreen"
-                  }
-                >
-                  <FontAwesomeIcon icon={faInfoCircle} />
-                  8 to 24 characters.
-                  <br />
-                  Must include uppercase and lowercase letters, a number and a
-                  special character.
-                  <br />
-                  Allowed special characters:{" "}
-                  <span aria-label="exclamation mark">!</span>{" "}
-                  <span aria-label="at symbol">@</span>{" "}
-                  <span aria-label="hashtag">#</span>{" "}
-                  <span aria-label="dollar sign">$</span>{" "}
-                  <span aria-label="percent">%</span>
-                </p>
                 <button
                   className={`${s["w-container"]} ${s["button"]} ${s["w-button"]}`}
                   disabled={!validLogin || !validPwd ? true : false}
