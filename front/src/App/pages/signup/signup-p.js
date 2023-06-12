@@ -60,6 +60,51 @@ const SignUp = () => {
     // }
   };
 
+  // <script>
+  //       const form = document.querySelector('#signup-form');
+  //       const usernameError = document.querySelector('.username.error');
+  //       const emailError = document.querySelector('.email.error');
+  //       const passwordError = document.querySelector('.password.error');
+  //       const confirmPasswordError = document.querySelector('.confirmPassword.error');
+
+  //       form.addEventListener('submit', async (e) => {
+  //           e.preventDefault();
+
+  //           //reset errors
+  //           usernameError.textContent = '';
+  //           emailError.textContent = '';
+  //           passwordError.textContent = '';
+  //           confirmPasswordError.textContent = '';
+
+  //           const username = form.username.value;
+  //           const email = form.email.value;
+  //           const password = form.password.value;
+  //           const confirmPassword = form.confirmPassword.value;
+
+  //           try {
+  //               const res = await fetch('/signup', {
+  //                   method: 'POST',
+  //                   body: JSON.stringify({ username, email, password, confirmPassword }),
+  //                   headers: {'Content-Type': 'application/json' }
+  //               });
+  //               const data = await res.json();
+  //               console.log(data);
+  //               if (data.errors) {
+  //                   usernameError.textContent = data.errors.username;
+  //                   emailError.textContent = data.errors.email;
+  //                   passwordError.textContent = data.errors.password;
+  //                   confirmPasswordError.textContent = data.errors.confirmPassword;
+  //               }
+  //               if (data.user) {
+  //                   location.assign('/mainpage')
+  //               }
+  //           }
+  //           catch (err) {
+  //               console.log(err);
+  //           }
+  //       });
+  //   </script>
+
   return (
     <div className={`${s["signUp"]}`}>
       <section className={`${s["wf-section"]}`}>

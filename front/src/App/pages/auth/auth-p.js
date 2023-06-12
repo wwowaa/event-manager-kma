@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   faCheck,
   faTimes,
@@ -14,6 +14,8 @@ const LOGIN_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 const Auth = () => {
+  const navigate = useNavigate();
+
   const loginRef = useRef();
   const errRef = useRef();
 
@@ -43,7 +45,7 @@ const Auth = () => {
     setErrMsg("");
   }, [login, pwd]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("sign-in form submitted");
 
@@ -53,34 +55,30 @@ const Auth = () => {
       setErrMsg("Invalid Entry");
       return;
     }
-    // TODO: remove console.logs before deployment
-    // try {
-    //     const response = await axios.post(REGISTER_URL,
-    //         JSON.stringify({ user, pwd }),
-    //         {
-    //             headers: { 'Content-Type': 'application/json' },
-    //             withCredentials: true
-    //         }
-    //     );
-    //     console.log(response?.data);
-    //     console.log(response?.accessToken);
-    //     console.log(JSON.stringify(response))
-    //     setSuccess(true);
-    //     //clear state and controlled inputs
-    //     //need value attrib on inputs for this
-    //     setUser('');
-    //     setPwd('');
-    //     setMatchPwd('');
-    // } catch (err) {
-    //     if (!err?.response) {
-    //         setErrMsg('No Server Response');
-    //     } else if (err.response?.status === 409) {
-    //         setErrMsg('Username Taken');
-    //     } else {
-    //         setErrMsg('Registration Failed')
-    //     }
-    //     errRef.current.focus();
-    // }
+
+    try {
+      const res = await fetch("/auth", {
+        method: "POST",
+        body: JSON.stringify({ login, pwd }),
+        headers: { "Content-Type": "application/json" },
+      });
+      const data = await res.json();
+      setSuccess(true);
+
+      if (data.user) {
+        navigate("../main");
+      }
+    } catch (err) {
+      console.log(err);
+      if (!err?.response) {
+        setErrMsg("No Server Response");
+      } else if (err.response?.status === 409) {
+        setErrMsg("Username Taken");
+      } else {
+        setErrMsg("Registration Failed");
+      }
+      errRef.current.focus();
+    }
   };
 
   return (
@@ -211,3 +209,44 @@ const Auth = () => {
 };
 
 export default Auth;
+
+{
+  /* <script>
+            const form = document.querySelector('#signup-form');
+            const emailError = document.querySelector('.email.error');
+            const passwordError = document.querySelector('.password.error');
+            
+    
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+    
+                //reset errors
+                emailError.textContent = '';
+                passwordError.textContent = '';
+    
+    
+                const email = form.email.value;
+                const password = form.password.value;
+    
+                try {
+                    const res = await fetch('/auth', {
+                        method: 'POST', 
+                        body: JSON.stringify({ email, password }),
+                        headers: {'Content-Type': 'application/json' }
+                    });
+                    const data = await res.json();
+                    console.log(data);
+                    if (data.errors) {
+                        emailError.textContent = data.errors.email;
+                        passwordError.textContent = data.errors.password;
+                    }
+                    if (data.user) {
+                        location.assign('/mainpage')
+                    }
+                }
+                catch (err) {
+                    console.log(err);
+                }
+            });
+        </script> */
+}
