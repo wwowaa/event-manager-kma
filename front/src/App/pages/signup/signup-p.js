@@ -9,6 +9,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import s from "./signup.module.css";
+import MainLayout from "../../comps/views/main_layout";
 
 const LOGIN_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -77,21 +78,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className={`${s["signUp"]}`}>
-      <section className={`${s["wf-section"]}`}>
-        <div className={`${s["container"]} ${s["w-container"]}`}>
-          <img
-            src="https://uploads-ssl.webflow.com/647656c1558e6661a7504185/647658ea0a96c077e089650e_Vectors-Wrapper.svg"
-            loading="lazy"
-            alt=""
-          />
-        </div>
-      </section>
-      <section className={`${s["wf-section"]}`}>
-        <div className={`${s["container-2"]} ${s["w-container"]}`}>
-          <h1 className={`${s["heading"]}`}>EVENT MANAGER</h1>
-        </div>
-      </section>
+    <MainLayout>
       <section className={`${s["section"]} ${s["wf-section"]}`}>
         <div className={`${s["container-3"]} ${s["w-container"]}`}>
           <p className={`${s["paragraph-2"]}`}>Sign up</p>
@@ -232,22 +219,7 @@ const SignUp = () => {
           </section>
         </div>
       </section>
-      <section className={`${s["section-3"]} ${s["wf-section"]}`}>
-        <div className={`${s["container-6"]} ${s["w-container"]}`}>
-          <h1 className={`${s["heading-2"]}`}>©VabeTech 2023</h1>
-        </div>
-      </section>
-      <script
-        src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=647656c1558e6661a7504185"
-        type="text/javascript"
-        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-        crossOrigin="anonymous"
-      ></script>
-      <script
-        src="https://uploads-ssl.webflow.com/647656c1558e6661a7504185/js/webflow.54ba778de.js"
-        type="text/javascript"
-      ></script>
-    </div>
+    </MainLayout>
   );
 };
 

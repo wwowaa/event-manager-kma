@@ -17,7 +17,6 @@ const MainLayout = ({ children }) => {
           <h1 className={`${s["heading"]}`}>EVENT MANAGER</h1>
         </div>
       </section>
-
       {children}
       <section className={`${s["section-3"]} ${s["wf-section"]}`}>
         <div className={`${s["container-6"]} ${s["w-container"]}`}>
