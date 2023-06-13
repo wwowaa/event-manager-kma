@@ -12,6 +12,7 @@ import PassReset2 from "./App/pages/passreset2/passreset2-p";
 import Event from "./App/pages/event/event-p";
 
 import "./App.css";
+import MainLayout from "./App/comps/views/main_layout";
 
 function App() {
   return (
@@ -64,6 +65,9 @@ function App() {
           <Route path="signup" element={<SignUp />} />
           <Route path="passreset1" element={<PassReset1 />} />
           <Route path="passreset2" element={<PassReset2 />} />
+
+          <Route path="test" element={<MainLayout />} />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>

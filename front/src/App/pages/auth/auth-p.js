@@ -6,31 +6,24 @@ import s from "./auth.module.css";
 const Auth = () => {
   const navigate = useNavigate();
 
-  const loginRef = useRef();
+  const emailRef = useRef();
   const errRef = useRef();
 
-  const [login, setLogin] = useState("");
-  const [pwd, setPwd] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const [errMsg, setErrMsg] = useState("");
 
   useEffect(() => {
-    loginRef.current.focus();
+    emailRef.current.focus();
   });
 
   useEffect(() => {
     setErrMsg("");
-  }, [login, pwd]);
+  }, [email, password]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("sign-in form submitted");
-
-    console.log(login);
-    console.log(pwd);
-
-    const email = login;
-    const password = pwd;
 
     try {
       const res = await fetch("http://localhost:3000/auth", {
@@ -38,15 +31,13 @@ const Auth = () => {
         body: JSON.stringify({ email, password }),
         headers: { "Content-Type": "application/json" },
       });
-      console.log(res);
+
       const data = await res.json();
-      console.log(data);
 
       if (data.user) {
         navigate("../main");
       }
     } catch (err) {
-      console.log(err);
       if (!err?.response) {
         setErrMsg("No Server Response");
       } else if (err.response?.status === 409) {
@@ -90,17 +81,17 @@ const Auth = () => {
               {errMsg}
             </p>
             <form onSubmit={handleSubmit} className={`${s["w-form"]}`}>
-              <label htmlFor="loginname" className={`${s["field-label"]}`}>
+              <label htmlFor="emailname" className={`${s["field-label"]}`}>
                 Username:
               </label>
               <input
                 className={`${s["w-input"]}`}
                 type="text"
-                id="loginname"
-                ref={loginRef}
+                id="emailname"
+                ref={emailRef}
                 autoComplete="off"
-                onChange={(e) => setLogin(e.target.value)}
-                value={login}
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
                 required
                 aria-describedby="uidnote"
               />
@@ -111,10 +102,10 @@ const Auth = () => {
                 className={`${s["w-input"]}`}
                 type="password"
                 id="password"
-                onChange={(e) => setPwd(e.target.value)}
-                value={pwd}
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
                 required
-                aria-describedby="pwdnote"
+                aria-describedby="passwordnote"
               />
               <button
                 className={`${s["w-container"]} ${s["button"]} ${s["w-button"]}`}

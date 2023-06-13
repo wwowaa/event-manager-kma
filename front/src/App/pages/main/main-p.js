@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 
+import MyCalendar from "../../comps/views/calendar";
+
 import s from "./mainpage.module.css";
 
 const Main = ({ username }) => {
@@ -55,7 +57,7 @@ const Main = ({ username }) => {
       </section>
       <section className={`${s["wf-section"]}`}>
         <div className={`${s["container-9"]} ${s["w-container"]}`}>
-          <p className={`${s["paragraph-3"]}`}>Calendar Placeholder</p>
+          <MyCalendar />
         </div>
       </section>
       <section className={`${s["section-5"]} ${s["wf-section"]}`}>
