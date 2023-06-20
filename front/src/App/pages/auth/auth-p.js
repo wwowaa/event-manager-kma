@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import MainLayout from "../../comps/views/main_layout.js";
+import AuthLayout from "../../comps/views/auth_layout.js";
 
 import s from "./auth.module.css";
 
@@ -52,7 +52,7 @@ const Auth = () => {
   };
 
   return (
-    <MainLayout>
+    <AuthLayout>
       <section className={`${s["section"]} ${s["wf-section"]}`}>
         <div className={`${s["container-3"]} ${s["w-container"]}`}>
           <p className={`${s["paragraph-2"]}`}>Sign in</p>
@@ -116,7 +116,7 @@ const Auth = () => {
           <Link to="../passreset1.html">Forgot your password?</Link>
         </div>
       </section>
-    </MainLayout>
+    </AuthLayout>
   );
 };
 

@@ -7,12 +7,9 @@ import Auth from "./App/pages/auth/auth-p";
 import Main from "./App/pages/main/main-p";
 import FullCalendar from "./App/pages/fullcalendar/fullcalendar-p";
 import SignUp from "./App/pages/signup/signup-p";
-import PassReset1 from "./App/pages/passreset1/passreset1-p";
-import PassReset2 from "./App/pages/passreset2/passreset2-p";
 import Event from "./App/pages/event/event-p";
 
 import "./App.css";
-import MainLayout from "./App/comps/views/main_layout";
 
 function App() {
   return (
@@ -63,10 +60,6 @@ function App() {
           <Route path="event" element={<Event />} />
           <Route path="fullcalendar" element={<FullCalendar />} />
           <Route path="signup" element={<SignUp />} />
-          <Route path="passreset1" element={<PassReset1 />} />
-          <Route path="passreset2" element={<PassReset2 />} />
-
-          <Route path="test" element={<MainLayout />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
