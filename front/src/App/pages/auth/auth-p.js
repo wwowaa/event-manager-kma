@@ -95,25 +95,18 @@ const Auth = () => {
                 required
                 aria-describedby="passwordnote"
               />
-              <button
-                className={`${s["w-container"]} ${s["button"]} ${s["w-button"]}`}
-              >
-                Sign In
-              </button>
+              <section className={s.submit}>
+                <button
+                  className={`${s["w-container"]} ${s["button"]} ${s["w-button"]}`}
+                >
+                  Sign In
+                </button>
+                <button className={`${s["button-copy"]} ${s["w-button"]}`}>
+                  Sign Up
+                </button>
+              </section>
             </form>
-            <p>
-              Not registred?
-              <br />
-              <span className="line">
-                <Link to="../signup.html">Sign up</Link>
-              </span>
-            </p>
           </section>
-        </div>
-      </section>
-      <section className={`${s["section-4"]} ${s["wf-section"]}`}>
-        <div className={`${s["container-5"]} ${s["w-container"]}`}>
-          <Link to="../passreset1.html">Forgot your password?</Link>
         </div>
       </section>
     </AuthLayout>

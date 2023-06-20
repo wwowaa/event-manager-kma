@@ -19,10 +19,11 @@ const AuthLayout = ({ children }) => {
       </section>
       {children}
       <section className={`${s["section-3"]} ${s["wf-section"]}`}>
-        <div className={`${s["container-6"]} ${s["w-container"]}`}>
+        <div className={`${s["container-2"]} ${s["w-container"]}`}>
           <h1 className={`${s["heading-2"]}`}>©VabeTech 2023</h1>
         </div>
       </section>
+
       <script
         src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=647656c1558e6661a7504185"
         type="text/javascript"

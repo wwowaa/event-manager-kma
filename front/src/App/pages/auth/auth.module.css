@@ -2308,6 +2308,20 @@ body {
   grid-area: span 1 / span 1 / span 1 / span 1;
 }
 
+.submit {
+  position: relative;
+}
+
+.submit button:first-of-type {
+  position: absolute;
+  left: 0;
+}
+
+.submit button:last-of-type {
+  position: absolute;
+  right: 0;
+}
+
 @font-face {
   font-family: "Montserrat Regular";
   src: url("https://uploads-ssl.webflow.com/647656c1558e6661a7504185/647779da86afc4da3dd5e12b_Montserrat-Regular.ttf")
