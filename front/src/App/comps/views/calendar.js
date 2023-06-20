@@ -26,18 +26,18 @@ const events = [
   {
     title: "Big Meeting",
     allDay: true,
-    start: new Date(2021, 6, 0),
-    end: new Date(2021, 6, 0),
+    start: new Date(2023, 6, 0),
+    end: new Date(2023, 6, 0),
   },
   {
     title: "Vacation",
-    start: new Date(2021, 6, 7),
-    end: new Date(2021, 6, 10),
+    start: new Date(2023, 6, 7),
+    end: new Date(2023, 6, 10),
   },
   {
     title: "Conference",
-    start: new Date(2021, 6, 20),
-    end: new Date(2021, 6, 23),
+    start: new Date(2023, 6, 20),
+    end: new Date(20233, 6, 23),
   },
 ];
 
@@ -93,6 +93,7 @@ const MyCalendar = () => {
       </div>
 
       <Calendar
+        views={["month", "week", "day"]}
         localizer={localizer}
         events={allEvents}
         startAccessor="start"

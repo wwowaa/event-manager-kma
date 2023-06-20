@@ -1,0 +1,40 @@
+.rbc-day-bg {
+  /* background: #e6e6e6; */
+  background: #ffffff;
+}
+
+/* #9CDCFF */
+.rbc-off-range-bg {
+  background: #8bc7ff;
+}
+
+.rbc-date-cell {
+  text-align: center;
+}
+
+.rbc-date-cell.rbc-now {
+  font-weight: bold;
+  color: white;
+}
+
+.rbc-button-link {
+  margin-top: 0.5vh;
+  height: 3vh;
+  width: 3vh;
+  border-radius: 50%;
+
+  color: #0033a1;
+}
+
+.rbc-button-link:hover {
+  background-color: #f1f3f4 !important;
+}
+
+.rbc-now .rbc-button-link {
+  background-color: #8bc7ff; /* Green */
+  font-weight: normal;
+}
+
+.rbc-event {
+  margin-top: 1vh;
+}
