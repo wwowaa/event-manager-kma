@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 
 import s from "../styles/layout.module.css";
-// import s from "../styles/layout.module.css";
 
-const MainHeader = () => {
+const MainHeader = ({ username }) => {
   return (
     <header className={`${s["wf-section"]}`}>
       <div className={`${s["w-layout-grid"]} ${s["grid-2"]}`}>
@@ -20,28 +19,16 @@ const MainHeader = () => {
             alt=""
           />
         </div>
-        <div
+        {/* <div
           id={s["w-node-_1a09ed2b-8753-fc1d-a82f-46661f8b457e-442f355a"]}
           className={`${s["container-7"]} ${s["w-container"]}`}
         >
-          <div
-            data-hover="false"
-            data-delay="0"
-            className={`${s["dropdown"]} ${s["w-dropdown"]}`}
-          >
-            <div
-              className={`${s["dropdown-toggle"]} ${s["w-dropdown-toggle"]}`}
-            >
-              <div className={`${s["w-icon-dropdown-toggle"]}`}></div>
-              <div className={`${s["text-block"]}`}>{"Username"}</div>
-            </div>
-            <nav className={`${s["w-dropdown-list"]}`}>
-              <Link to="../auth.html" className={`${s["w-dropdown-link"]}`}>
-                Sign Out
-              </Link>
-            </nav>
-          </div>
-        </div>
+          <nav className={`${s["w-dropdown-list"]}`}>
+            <Link to="../auth.html" className={`${s["w-dropdown-link"]}`}>
+              Sign Out
+            </Link>
+          </nav>
+        </div> */}
       </div>
     </header>
   );

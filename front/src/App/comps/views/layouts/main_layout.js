@@ -4,7 +4,7 @@ import MainHeader from "../main_header";
 const MainLayout = ({ children }) => {
   return (
     <>
-      <MainHeader />
+      <MainHeader username={"username"} />
       {children}
       <Footer />
     </>
