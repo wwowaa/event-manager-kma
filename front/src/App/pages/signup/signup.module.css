@@ -37,6 +37,11 @@ audio:not([controls]) {
   display: none;
 }
 
+.submit {
+  margin-top: 2vh;
+  display: flex;
+}
+
 [hidden],
 template {
   display: none;

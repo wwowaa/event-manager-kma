@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import MainLayout from "../../comps/views/main_layout";
+import MainLayout from "../../comps/views/layouts/main_layout";
 
 import s from "./event.module.css";
 

@@ -1,0 +1,33 @@
+/* <footer className={`${s["section-3"]} ${s["wf-section"]}`}>
+<div className={`${s["container-2"]} ${s["w-container"]}`}>
+  <h1 className={`${s["heading-2"]}`}>©VabeTech 2023</h1>
+</div>
+</footer> */
+
+.section-3 {
+  margin-top: 161px;
+}
+
+.w-container {
+  background-color: #8bc7ff;
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.w-container:before,
+.w-container:after {
+  content: " ";
+  grid-area: 1 / 1 / 2 / 2;
+  display: table;
+}
+
+.w-container:after {
+  clear: both;
+}
+
+.heading-2 {
+  font-family: Montserrat Alternates, sans-serif;
+  font-size: 32px;
+  text-align: center;
+}

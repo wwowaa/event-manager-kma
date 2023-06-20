@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import MyCalendar from "../../comps/views/calendar";
-import MainLayout from "../../comps/views/main_layout";
+import MainLayout from "../../comps/views/layouts/main_layout";
 
 import s from "./mainpage.module.css";
 

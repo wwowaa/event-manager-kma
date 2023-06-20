@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import s from "./signup.module.css";
-import AuthLayout from "../../comps/views/auth_layout";
+import AuthLayout from "../../comps/views/layouts/auth_layout";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -105,12 +105,14 @@ const SignUp = () => {
                 value={confirmPassword}
                 required
               />
-              <button
-                className={`${s["w-container"]} ${s["button"]} ${s["w-button"]}`}
-                type="submit"
-              >
-                Sign Up
-              </button>
+              <section className={s.submit}>
+                <button
+                  className={`${s["w-container"]} ${s["button"]} ${s["w-button"]}`}
+                  type="submit"
+                >
+                  Sign Up
+                </button>
+              </section>
             </form>
           </section>
         </div>

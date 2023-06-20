@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import AuthLayout from "../../comps/views/auth_layout.js";
+import AuthLayout from "../../comps/views/layouts/auth_layout.js";
 
 import s from "./auth.module.css";
 
