@@ -2,11 +2,13 @@ import format from "date-fns/format";
 import getDay from "date-fns/getDay";
 import parse from "date-fns/parse";
 import startOfWeek from "date-fns/startOfWeek";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+
+import { Modal } from "./add_event_dialog-p";
 
 import s from "./../styles/calendar.module.css";
 
@@ -42,56 +44,37 @@ const events = [
 ];
 
 const MyCalendar = () => {
-  const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" });
+  const [openModal, setOpenModal] = useState(false);
+  const startDate = useRef();
+  const endDate = useRef();
+
   const [allEvents, setAllEvents] = useState(events);
 
-  function handleAddEvent() {
-    for (let i = 0; i < allEvents.length; i++) {
-      const d1 = new Date(allEvents[i].start);
-      const d2 = new Date(newEvent.start);
-      const d3 = new Date(allEvents[i].end);
-      const d4 = new Date(newEvent.end);
-
-      if ((d1 <= d2 && d2 <= d3) || (d1 <= d4 && d4 <= d3)) {
-        alert("CLASH");
-        break;
-      }
-    }
-
+  function handleAddEvent(newEvent) {
+    console.log(newEvent);
     setAllEvents([...allEvents, newEvent]);
+  }
+
+  function handleSlotEvent({ slots }) {
+    // console.log(slots);
+
+    startDate.current = Date.parse(slots[0]);
+    endDate.current = Date.parse(slots[slots.length - 1]);
+
+    setOpenModal(true);
   }
 
   return (
     <div className="Calednar">
-      <div className={s.newEvent}>
-        <h2>Add New Event</h2>
-        <form onSubmit={handleAddEvent}>
-          <input
-            type="text"
-            placeholder="Add Title"
-            style={{ width: "20%", marginRight: "10px" }}
-            value={newEvent.title}
-            onChange={(e) =>
-              setNewEvent({ ...newEvent, title: e.target.value })
-            }
-          />
-          <DatePicker
-            placeholderText="Start Date"
-            style={{ marginRight: "10px" }}
-            selected={newEvent.start}
-            onChange={(start) => setNewEvent({ ...newEvent, start })}
-          />
-          <DatePicker
-            placeholderText="End Date"
-            selected={newEvent.end}
-            onChange={(end) => setNewEvent({ ...newEvent, end })}
-          />
-          <button type="submit" stlye={{ marginTop: "10px" }}>
-            Add Event
-          </button>
-        </form>
-      </div>
-
+      {openModal && (
+        <Modal
+          openModal={openModal}
+          setOpenModal={setOpenModal}
+          handleAddEvent={(newEvent) => handleAddEvent(newEvent)}
+          startDate={startDate.current}
+          endDate={endDate.current}
+        />
+      )}
       <Calendar
         views={["month", "week", "day"]}
         localizer={localizer}
@@ -99,6 +82,9 @@ const MyCalendar = () => {
         startAccessor="start"
         endAccessor="end"
         style={{ height: 500, margin: "50px" }}
+        selectable
+        onSelectSlot={handleSlotEvent}
+        popup
       />
     </div>
   );

@@ -3,12 +3,11 @@ import { Link } from "react-router-dom";
 
 import MyCalendar from "../../comps/views/calendar";
 import MainLayout from "../../comps/views/layouts/main_layout";
+import { Modal } from "../../comps/views/add_event_dialog-p.js";
 
 import s from "./fullcalendar.module.css";
 
 const FullCalendar = () => {
-  // const [date, setDate] = useState(new Date());
-
   return (
     <MainLayout>
       <section className={`${s["section-8"]} ${s["wf-section"]}`}>

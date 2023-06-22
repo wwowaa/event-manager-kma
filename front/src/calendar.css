@@ -1,6 +1,13 @@
 .rbc-day-bg {
   /* background: #e6e6e6; */
   background: #ffffff;
+
+  transition: box-shadow 0.2s;
+}
+
+.rbc-day-bg:hover {
+  cursor: pointer;
+  box-shadow: inset 0 0 10px #ddd;
 }
 
 /* #9CDCFF */
@@ -24,6 +31,7 @@
   border-radius: 50%;
 
   color: #0033a1;
+  transition: background-color 0.5s;
 }
 
 .rbc-button-link:hover {
@@ -37,4 +45,8 @@
 
 .rbc-event {
   margin-top: 1vh;
+}
+
+.foo {
+  background-color: magenta;
 }
