@@ -84,13 +84,13 @@
         <p class="paragraph-6-copy">LOGO</p>
       </div>
       <div class="container-8 w-container">
-        <h1 class="heading-4">EVENT NAME</h1>
+        <h1 class="heading-4"><%= event.eventname %></h1>
       </div>
     </section>
     <div class="div-block-copy">
       <p class="paragraph-6">
-        Organized by:<br /><br />ORGANIZATION NAME<br /><br /><br /><br />Date:
-        DD/MM/YY at HH.MM<br /><br />at PLACE<br />‍
+        Organized by:<br /><br /><%= event.organiser %><br /><br /><br /><br />Date:
+        <%= event.date.toDateString() %> at <%= event.time %><br /><br />at <%= event.location %><br />‍
       </p>
     </div>
     <section class="wf-section">
@@ -101,16 +101,7 @@
     <section class="section-5 wf-section">
       <div class="container-10 w-container">
         <p class="paragraph-7">
-          Optional Description Text of the Event: <br />Lorem ipsum dolor sit
-          amet, consectetur adipiscing elit. Maecenas fermentum arcu quis tellus
-          maximus, sit amet tincidunt erat faucibus. Maecenas nec vulputate
-          massa. Donec quis ex urna. Sed pellentesque odio at sapien dignissim
-          sollicitudin. Nullam a ipsum tortor. Duis a diam non massa finibus
-          pharetra quis eu nulla. In lorem ante, aliquet ut mauris vel,
-          facilisis faucibus ante. Morbi feugiat facilisis facilisis. Etiam
-          tempus libero in nunc condimentum pharetra. Phasellus congue diam
-          turpis, id dignissim nibh ultrices a. Mauris tortor lacus, tristique
-          at commodo nec, volutpat ut mi.
+          <%= event.description %>
         </p>
       </div>
     </section>

@@ -5,6 +5,7 @@ const authRoutes = require("./routes/authRoutes");
 const eventRoutes = require("./routes/eventRoutes");
 const cookieParser = require("cookie-parser");
 const { requireAuth, checkUser } = require("./middleware/authMiddleware");
+const eventHandler = require("./middleware/eventMiddleware");
 
 const app = express();
 const port = 3000;
@@ -47,7 +48,7 @@ app.get("*", checkUser);
 
 app.get("", (req, res) => res.render("auth"));
 
-app.get("/event", requireAuth, (req, res) => res.render("event"));
+//app.get("/event", requireAuth, (req, res) => res.render("event"));
 
 app.get("/fullcalendar", requireAuth, (req, res) => res.render("fullcalendar"));
 
@@ -62,6 +63,11 @@ app.get("/signup", (req, res) => res.render("signup"));
 app.get("/auth", (req, res) => res.render("auth"));
 
 app.get("/addevent", requireAuth, (req, res) => res.render("addevent"));
+
+app.get("/event/:eventId", requireAuth, eventHandler, (req, res) => {
+  res.render("event");
+});
+ 
 
 app.use(authRoutes);
 app.use(eventRoutes);
