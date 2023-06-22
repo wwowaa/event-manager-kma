@@ -55,6 +55,7 @@ function App() {
       </HelmetProvider>
       <Router>
         <Routes>
+          <Route path="/" element={<Auth />} />
           <Route path="auth" element={<Auth />} />
           <Route path="main" element={<Main />} />
           <Route path="event/:id" element={<Event />} />
