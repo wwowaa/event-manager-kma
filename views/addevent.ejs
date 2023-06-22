@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- This site was created in Webflow. https://www.webflow.com --><!-- Last Published: Wed May 31 2023 18:49:32 GMT+0000 (Coordinated Universal Time) -->
+<!-- This site was created in Webflow. https://www.webflow.com --><!-- Last Published: Fri Jun 02 2023 11:15:06 GMT+0000 (Coordinated Universal Time) -->
 <html
   data-wf-domain="vabetechs-event-manager.webflow.io"
   data-wf-page="647656c1558e6661a7504188"
@@ -10,7 +10,11 @@
     <title>VabeTech&#x27;s Event Manager</title>
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="Webflow" name="generator" />
-    <link href="css/auth.css" rel="stylesheet" type="text/css" />
+    <link
+      href="https://uploads-ssl.webflow.com/647656c1558e6661a7504185/css/vabetechs-event-manager.webflow.b8cbbf1cb.css"
+      rel="stylesheet"
+      type="text/css"
+    />
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link
       href="https://fonts.gstatic.com"
@@ -69,53 +73,101 @@
     </section>
     <section class="section wf-section">
       <div class="container-3 w-container">
-        <p class="paragraph-2">Sign in</p>
+        <p class="paragraph-2">Add Event</p>
       </div>
     </section>
-    <section class="wf-section">
+    <section>
       <div class="container-4 w-container">
         <form id="signup-form">
-          <label for="email" class="field-label">Email</label>
+          <label for="eventname" class="field-label">Event name</label>
           <input
             type="text"
             class="w-input"
             maxlength="256"
-            name="email"
-            data-name="email"
+            name="username"
+            data-name="username"
             placeholder=""
-            id="email"
+            id="eventname"
             required
           />
-          <div class="email error"></div>
-          <label for="password" class="field-label">Password</label>
+          <div class="eventname error"></div>
+          <label for="organiser" class="field-label">Organiser</label>
           <input
-            type="password"
+            type="text"
             class="w-input"
             maxlength="256"
-            name="password"
-            data-name="password"
+            name=""
+            data-name="organiser"
             placeholder=""
-            id="password"
+            id="organiser"
             required
           />
-          <div class="password error"></div>
-          <div
-            id="w-node-_1f4b4022-35dc-bf16-9e9e-d0eca0176e70-a7504188"
-            class="w-container"
+          <div class="organiser error"></div>
+          <label for="date" class="field-label">Date</label>
+          <input
+            type="date"
+            class="w-input"
+            maxlength="256"
+            name="date"
+            data-name="date"
+            placeholder=""
+            id="date"
+            required
+          />
+          <div class="date error"></div>
+          <label for="time" class="field-label"
+            >Time</label
           >
-            <button type="submit" class="button-copy w-button">SIGN IN</button>
+          <input
+            type="text"
+            class="w-input"
+            maxlength="256"
+            name="time"
+            data-name="time"
+            placeholder=""
+            id="time"
+            required
+          />
+          <div class="time error"></div>
+          <label for="location" class="field-label"
+            >Location</label
+          >
+          <input
+            type="text"
+            class="w-input"
+            maxlength="256"
+            name="location"
+            data-name="location"
+            placeholder=""
+            id="location"
+            required
+          />
+          <div class="location error"></div>
+          <label for="description" class="field-label"
+            >Description</label
+          >
+          <input
+            type="text"
+            class="w-input"
+            maxlength="1000"
+            name="description"
+            data-name="description"
+            placeholder=""
+            id="description"
+            required
+          />
+          <div class="location error"></div>
+          <div
+            id="w-node-e338ce3f-f36d-760c-8337-1c162cb76e4a-a7504188"
+            class="container-14 w-container"
+          >
+            <button type="submit" class="button-copy w-button">Add event</button>
+            <div class="container-10 w-container">
+               <a href="/mainpage" class="button-2 w-button">BACK</a>
+            </div>
+            </section>
           </div>
         </form>
-      </div>
-    </section>
-    <section class="section-2 wf-section">
-      <div class="w-layout-grid grid">
-        <div
-          id="w-node-e338ce3f-f36d-760c-8337-1c162cb76e4a-a7504188"
-          class="w-container"
-        >
-          <a href="/signup" class="button-copy w-button">SIGN UP</a>
-        </div>
       </div>
     </section>
     <section class="section-3 wf-section">
@@ -129,38 +181,34 @@
       integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
       crossOrigin="anonymous"
     ></script>
-    <script src="js/auth.js" type="text/javascript"></script>
+    <script
+      src="https://uploads-ssl.webflow.com/647656c1558e6661a7504185/js/webflow.54ba778de.js"
+      type="text/javascript"
+    ></script>
     <script>
       const form = document.querySelector("#signup-form");
-      const emailError = document.querySelector(".email.error");
-      const passwordError = document.querySelector(".password.error");
+      
 
       form.addEventListener("submit", async (e) => {
         e.preventDefault();
 
-        //reset errors
-        emailError.textContent = "";
-        passwordError.textContent = "";
-
-        const email = form.email.value;
-        const password = form.password.value;
-
+        const eventname = form.eventname.value;
+        const organiser= form.organiser.value;
+        const date = form.date.value;
+        const time = form.time.value;
+        const location = form.location.value;
+        const description = form.description.value;
+       
         try {
-          const res = await fetch("/auth", {
-            method: "POST",
-            body: JSON.stringify({ email, password }),
-            headers: { "Content-Type": "application/json" },
+          const res = await fetch('/addevent', {
+            method: 'POST',
+            body: JSON.stringify({ eventname, organiser, date, time, location, description }),
+            headers: {'Content-Type': 'application/json' }
           });
           const data = await res.json();
           console.log(data);
-          if (data.errors) {
-            emailError.textContent = data.errors.email;
-            passwordError.textContent = data.errors.password;
-          }
-          if (data.user) {
-            location.assign("/mainpage");
-          }
-        } catch (err) {
+        }
+        catch (err) {
           console.log(err);
         }
       });
