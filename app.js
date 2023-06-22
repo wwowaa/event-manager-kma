@@ -54,9 +54,9 @@ app.get("/fullcalendar", requireAuth, (req, res) => res.render("fullcalendar"));
 
 app.get("/mainpage", requireAuth, (req, res) => res.render("mainpage"));
 
-app.get("/passreset1", (req, res) => res.render("passreset1"));
+//app.get("/passreset1", (req, res) => res.render("passreset1"));
 
-app.get("/passreset2", (req, res) => res.render("passreset2"));
+//app.get("/passreset2", (req, res) => res.render("passreset2"));
 
 app.get("/signup", (req, res) => res.render("signup"));
 
@@ -64,7 +64,7 @@ app.get("/auth", (req, res) => res.render("auth"));
 
 app.get("/addevent", requireAuth, (req, res) => res.render("addevent"));
 
-app.get("/event/:eventId", requireAuth, eventHandler, (req, res) => {
+app.get("/:eventId", requireAuth, eventHandler, (req, res) => {
   res.render("event");
 });
  
