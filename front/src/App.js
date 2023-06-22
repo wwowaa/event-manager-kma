@@ -57,7 +57,7 @@ function App() {
         <Routes>
           <Route path="auth" element={<Auth />} />
           <Route path="main" element={<Main />} />
-          <Route path="event" element={<Event />} />
+          <Route path="event/:id" element={<Event />} />
           <Route path="fullcalendar" element={<FullCalendar />} />
           <Route path="signup" element={<SignUp />} />
 

@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import MainLayout from "../../comps/views/layouts/main_layout";
 
 import s from "./event.module.css";
 
 const Event = () => {
+  let params = useParams();
   return (
     <MainLayout>
       <section className={`${s["section-8"]} ${s["wf-section"]}`}>
@@ -16,6 +17,7 @@ const Event = () => {
         </div>
       </section>
       <div className={`${s["div-block-copy"]}`}>
+        <h1>User Details: {params.id}</h1>;
         <p className={`${s["paragraph-6"]}`}>
           Organized by:
           <br />
