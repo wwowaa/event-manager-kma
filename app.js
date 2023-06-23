@@ -41,6 +41,12 @@ app.get("*", checkUser);
 
 app.get("", (req, res) => res.render("auth"));
 
+app.get("/user", function (req, res) {
+  res.json(res.locals.user);
+
+  console.log(res.locals.user);
+});
+
 //app.get("/event", requireAuth, (req, res) => res.render("event"));
 
 app.get("/fullcalendar", requireAuth, (req, res) => res.render("fullcalendar"));

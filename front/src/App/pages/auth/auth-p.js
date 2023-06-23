@@ -36,7 +36,7 @@ const Auth = () => {
       if (data.user) {
         navigate("../main", {
           state: {
-            username: data.username,
+            id: data.user,
           },
         });
       }

@@ -1,4 +1,7 @@
+import Cookies from "js-cookie";
+
 import { Link, useLocation } from "react-router-dom";
+import { useEffect, useRef } from "react";
 
 import MyCalendar from "../../comps/views/calendar";
 import MainLayout from "../../comps/views/layouts/main_layout";
@@ -6,11 +9,35 @@ import MainLayout from "../../comps/views/layouts/main_layout";
 import s from "./mainpage.module.css";
 
 const Main = () => {
+  const username = useRef("Гриша");
+
   const location = useLocation();
-  const { username } = location.state;
+  const { id } = location.state;
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      // Cookies.set("jwt", "andchermeister secret", { expires: 7 });
+      // const token = "andchermeister secret"; // The JWT value
+      // const expiryDate = new Date();
+      // expiryDate.setDate(expiryDate.getDate() + 7);
+      // document.cookie = `jwt=${token}; expires=${expiryDate.toUTCString()}; path=/`;
+      // const res = await fetch("http://localhost:3000/user");
+      // const data = await res.json();
+      // console.log(data);
+    };
+    fetchUser();
+    // fetch("/user")
+    //   .then((response) => {
+    //     console.log(response.text());
+    //     response.json();
+    //   })
+    //   .then((data) => {
+    //     username.current = data;
+    //   });
+  }, []);
 
   return (
-    <MainLayout username={username}>
+    <MainLayout username={username.current}>
       <section className={`${s["wf-section"]}`}>
         <div className={`${s["container-8"]} ${s["w-container"]}`}>
           <h1 className={`${s["heading-3"]}`}>
@@ -22,14 +49,14 @@ const Main = () => {
       </section>
       <section className={`${s["wf-section"]}`}>
         <div className={`${s["container-9"]} ${s["w-container"]}`}>
-          <MyCalendar username={username} />
+          <MyCalendar username={username.current} />
         </div>
       </section>
       <section className={`${s["section-5"]} ${s["wf-section"]}`}>
         <div className={`${s["container-10"]} ${s["w-container"]}`}>
           <Link
             to="../fullcalendar"
-            state={{ username: username }}
+            state={{ username: "john" }}
             className={`${s["button-2"]} ${s["w-button"]}`}
           >
             Full Calendar
