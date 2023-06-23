@@ -32,12 +32,16 @@ const Auth = () => {
       });
 
       const data = await res.json();
-      console.log(data);
-      console.log(data.user);
-      console.log(data.username);
+      // console.log(data);
+
+      // console.log(data.username);
 
       if (data.user) {
-        navigate("../main");
+        navigate("../main", {
+          state: {
+            username: data.username,
+          },
+        });
       }
     } catch (err) {
       if (!err?.response) {

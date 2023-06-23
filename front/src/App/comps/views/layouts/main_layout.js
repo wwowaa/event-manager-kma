@@ -1,10 +1,10 @@
 import Footer from "../footer";
 import MainHeader from "../main_header";
 
-const MainLayout = ({ children }) => {
+const MainLayout = ({ children, username }) => {
   return (
     <>
-      <MainHeader username={"username"} />
+      <MainHeader username={username} />
       {children}
       <Footer />
     </>

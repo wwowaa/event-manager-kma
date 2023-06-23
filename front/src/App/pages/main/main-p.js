@@ -1,13 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import MyCalendar from "../../comps/views/calendar";
 import MainLayout from "../../comps/views/layouts/main_layout";
 
 import s from "./mainpage.module.css";
 
-const Main = ({ username }) => {
+const Main = () => {
+  const { state } = useLocation();
   return (
-    <MainLayout>
+    <MainLayout username={state.username}>
       <section className={`${s["wf-section"]}`}>
         <div className={`${s["container-8"]} ${s["w-container"]}`}>
           <h1 className={`${s["heading-3"]}`}>
