@@ -30,6 +30,10 @@ const userSchema = new mongoose.Schema({
             },
             message: 'Passwords do not match'
         }
+    },
+    role: {
+        type: String,
+        default: 'user'
     }
 });
 
@@ -42,7 +46,7 @@ userSchema.pre('save', async function (next) {
     const salt = await bcrypt.genSalt();
     this.password = await bcrypt.hash(this.password, salt);
     this.confirmPassword = this.password;
-    
+
     next();
 });
 

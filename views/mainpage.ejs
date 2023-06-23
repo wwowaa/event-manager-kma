@@ -100,7 +100,9 @@
       </div>
     </section>
     <section class="wf-section">
-      <a href="/addevent" class="button-2 w-button">Add Event</a>
+      <% if (user.role === 'admin') { %>
+        <a href="/addevent" class="button-2 w-button">Add Event</a>
+      <% } %>
       <div class="container-9 w-container">
         <p class="paragraph-3">Calendar Placeholder</p>
       </div>
