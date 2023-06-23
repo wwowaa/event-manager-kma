@@ -17,15 +17,12 @@ const Auth = () => {
   const [errMsg, setErrMsg] = useState("");
 
   useEffect(() => {
-    emailRef.current.focus();
-  });
-
-  useEffect(() => {
     setErrMsg("");
   }, [email, password]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("signIn button clicked");
 
     try {
       const res = await fetch("http://localhost:3000/auth", {
@@ -49,6 +46,11 @@ const Auth = () => {
       }
       errRef.current.focus();
     }
+  };
+
+  const handleSignUpButton = () => {
+    console.log("signUp button clicked");
+    navigate("../signup");
   };
 
   return (
@@ -95,13 +97,17 @@ const Auth = () => {
                 required
                 aria-describedby="passwordnote"
               />
+
               <section className={s.submit}>
                 <button
                   className={`${s["w-container"]} ${s["button"]} ${s["w-button"]}`}
                 >
                   Sign In
                 </button>
-                <button className={`${s["button-copy"]} ${s["w-button"]}`}>
+                <button
+                  className={`${s["button-copy"]} ${s["w-button"]}`}
+                  onClick={handleSignUpButton}
+                >
                   Sign Up
                 </button>
               </section>

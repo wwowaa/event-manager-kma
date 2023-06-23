@@ -2294,6 +2294,11 @@ body {
   margin-right: auto;
 }
 
+/* .foo {
+  background-color: magenta;
+  z-index: 10;
+} */
+
 .heading-2 {
   font-family: Montserrat Alternates, sans-serif;
   font-size: 32px;

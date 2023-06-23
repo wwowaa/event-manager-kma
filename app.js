@@ -67,7 +67,10 @@ app.get("/addevent", requireAuth, (req, res) => res.render("addevent"));
 app.get("/:eventId", requireAuth, eventHandler, (req, res) => {
   res.render("event");
 });
- 
+
+// app.get("/:eventId", requireAuth, eventHandler, (req, res) => {
+//   res.render("event");
+// });
 
 app.use(authRoutes);
 app.use(eventRoutes);

@@ -2,7 +2,7 @@ import format from "date-fns/format";
 import getDay from "date-fns/getDay";
 import parse from "date-fns/parse";
 import startOfWeek from "date-fns/startOfWeek";
-import React, { useState, useRef, useMemo } from "react";
+import React, { useState, useRef, useMemo, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
@@ -11,7 +11,6 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 import { Modal } from "./add_event_dialog-p";
-import Event from "./event.js";
 
 import s from "./../styles/calendar.module.css";
 
@@ -27,30 +26,31 @@ const localizer = dateFnsLocalizer({
   locales,
 });
 
-const events = [
-  {
-    title: "Big Meeting",
-    allDay: true,
-    start: new Date(2023, 6, 0),
-    end: new Date(2023, 6, 0),
-    id: 1,
-  },
-  {
-    title: "Vacation",
-    start: new Date(2023, 6, 7),
-    end: new Date(2023, 6, 10),
-    id: 2,
-  },
-  {
-    title: "Conference",
-    start: new Date(2023, 6, 20),
-    end: new Date(20233, 6, 23),
-    id: 3,
-  },
-];
+// const events = [
+//   {
+//     title: "Big Meeting",
+//     allDay: true,
+//     start: new Date(2023, 6, 0),
+//     end: new Date(2023, 6, 0),
+//     id: 1,
+//   },
+//   {
+//     title: "Vacation",
+//     start: new Date(2023, 6, 7),
+//     end: new Date(2023, 6, 10),
+//     id: 2,
+//   },
+//   {
+//     title: "Conference",
+//     start: new Date(2023, 6, 20),
+//     end: new Date(20233, 6, 23),
+//     id: 3,
+//   },
+// ];
 
 const MyCalendar = () => {
   const navigate = useNavigate();
+  const [events, setEvents] = useState([]);
 
   // const [openModal, setOpenModal] = useState(false);
   // const startDate = useRef();
@@ -70,6 +70,22 @@ const MyCalendar = () => {
     // setOpenModal(true);
   }
 
+  useEffect(() => {
+    const response = async () => {
+      try {
+        const res = await fetch("http://localhost:3000/events");
+        const data = await res.json();
+
+        if (res.ok) {
+          setEvents(data);
+        }
+        console.log(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+  }, []);
+
   const [selected, setSelected] = useState();
 
   const handleSelected = (event) => {
@@ -77,27 +93,6 @@ const MyCalendar = () => {
 
     // navigate(`../event/${event.id}`);
   };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   console.log("sign-up form submitted");
-
-  //   try {
-  //     const res = await fetch("http://localhost:3000/signup", {
-  //       method: "POST",
-  //       body: JSON.stringify({ username, email, password, confirmPassword }),
-  //       headers: { "Content-Type": "application/json" },
-  //     });
-  //     const data = await res.json();
-  //     console.log(data);
-
-  //     if (data.user) {
-  //       navigate("../main");
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
 
   return (
     <div className="Calednar">
