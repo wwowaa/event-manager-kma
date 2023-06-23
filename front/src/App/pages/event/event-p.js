@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 
 import MainLayout from "../../comps/views/layouts/main_layout";
 
@@ -6,8 +6,10 @@ import s from "./event.module.css";
 
 const Event = () => {
   let params = useParams();
+  const location = useLocation();
+  const { username } = location.state;
   return (
-    <MainLayout>
+    <MainLayout username={username}>
       <section className={`${s["section-8"]} ${s["wf-section"]}`}>
         <div className={`${s["div-block"]}`}>
           <p className={`${s["paragraph-6-copy"]}`}>LOGO</p>
@@ -67,6 +69,7 @@ const Event = () => {
               className={`${s["button"]} ${s["w-button"]} ${s["w--current"]}`}
               to="../mainpage.html"
               aria-current="page"
+              state={{ username: username }}
             >
               REMIND ME
             </Link>
@@ -78,6 +81,7 @@ const Event = () => {
             <Link
               className={`${s["button-copy"]} ${s["w-button"]}`}
               to="../mainpage.html"
+              state={{ username: username }}
             >
               {" "}
               BACK{" "}

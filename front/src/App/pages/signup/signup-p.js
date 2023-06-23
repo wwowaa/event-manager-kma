@@ -37,7 +37,11 @@ const SignUp = () => {
       console.log(data);
 
       if (data.user) {
-        navigate("../main");
+        navigate("../main", {
+          state: {
+            username: username,
+          },
+        });
       }
     } catch (err) {
       console.log(err);

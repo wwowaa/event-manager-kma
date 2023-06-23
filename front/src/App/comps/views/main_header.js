@@ -10,7 +10,7 @@ const MainHeader = ({ username }) => {
           id={s["w-node-f92008a7-8b35-66e3-c9e6-be074db36a69-442f355a"]}
           className={`${s["w-container"]}`}
         >
-          <Link to="/main">
+          <Link to="/main" state={{ username: username }}>
             <img
               src="https://uploads-ssl.webflow.com/647656c1558e6661a7504185/6478735b446190bbebce5d89_%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202023-06-01%20133014.png"
               loading="lazy"
