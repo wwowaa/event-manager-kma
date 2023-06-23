@@ -208,7 +208,7 @@
           const data = await res.json();
           //Redirect to the event page
           if (data.event) {
-            window.location.href = '/' + data.event;
+            window.location.href = '/event/' + data.event;
           }
           
         }
