@@ -24,17 +24,15 @@ const Event = () => {
   console.log(logo_event);
   console.log(logo_org);
 
-  const event_id = logo_event.match(/\/d\/(.+)\/view/);
-  const logo_id = logo_org.match(/\/d\/(.+)\/view/);
-  const event = event_id[1];
-  const org = logo_id[1];
+  const event_image_id = logo_event.match(/\/d\/(.+)\/view/)[1];
+  const org_image_id = logo_org.match(/\/d\/(.+)\/view/)[1];
 
   return (
     <MainLayout username={username}>
       <section className={`${s["section-8"]} ${s["wf-section"]}`}>
         <div className={`${s["div-block"]}`}>
           <img
-            src={`https://drive.google.com/uc?export=view&id=${org}`}
+            src={`https://drive.google.com/uc?export=view&id=${org_image_id}`}
             alt="drive image"
           />
         </div>
@@ -59,7 +57,7 @@ const Event = () => {
         <div className={`${s["container-9"]} ${s["w-container"]}`}>
           <img
             className={`${s["paragraph-3"]}`}
-            src={`https://drive.google.com/uc?export=view&id=${event}`}
+            src={`https://drive.google.com/uc?export=view&id=${event_image_id}`}
             alt="drive image"
           />
         </div>
