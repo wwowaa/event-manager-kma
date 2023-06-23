@@ -23,12 +23,11 @@ const requireAuth = (req, res, next) => {
 // check current user
 const checkUser = (req, res, next) => {
   const token = req.cookies.jwt;
-  console.log(req.cookies.jwt);
+  //   console.log(req.cookies.jwt);
 
   if (token) {
     jwt.verify(token, "andchermeister secret", async (err, decodedToken) => {
       if (err) {
-        console.log("first iff");
         console.log(err.message);
         res.locals.user = null;
         next();
@@ -40,7 +39,6 @@ const checkUser = (req, res, next) => {
       }
     });
   } else {
-    console.log("else");
     res.locals.user = null;
     next();
   }

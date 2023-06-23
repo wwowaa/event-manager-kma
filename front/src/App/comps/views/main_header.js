@@ -35,7 +35,7 @@ const MainHeader = ({ username }) => {
               <div className={`${s["text-block"]}`}>{username}</div>
             </div>
             <nav className={`${s["w-dropdown-list"]}`}>
-              <Link to="../auth.html" className={`${s["w-dropdown-link"]}`}>
+              <Link to="../auth" className={`${s["w-dropdown-link"]}`}>
                 Sign Out
               </Link>
             </nav>

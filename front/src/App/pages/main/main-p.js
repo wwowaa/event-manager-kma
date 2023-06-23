@@ -9,10 +9,7 @@ import MainLayout from "../../comps/views/layouts/main_layout";
 import s from "./mainpage.module.css";
 
 const Main = () => {
-  const username = useRef("Гриша");
-
-  const location = useLocation();
-  const { id } = location.state;
+  const username = useRef("username");
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -21,9 +18,14 @@ const Main = () => {
       // const expiryDate = new Date();
       // expiryDate.setDate(expiryDate.getDate() + 7);
       // document.cookie = `jwt=${token}; expires=${expiryDate.toUTCString()}; path=/`;
-      // const res = await fetch("http://localhost:3000/user");
+      const res = await fetch(`http://localhost:3000/users/`);
+      const text = await res.text();
+
+      console.log(text);
       // const data = await res.json();
       // console.log(data);
+
+      // username.current = data.username;
     };
     fetchUser();
     // fetch("/user")

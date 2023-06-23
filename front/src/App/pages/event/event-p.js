@@ -17,12 +17,26 @@ const Event = () => {
     time,
     venue,
     description,
+    logo_event,
+    logo_org,
   } = location.state;
+
+  console.log(logo_event);
+  console.log(logo_org);
+
+  const event_id = logo_event.match(/\/d\/(.+)\/view/);
+  const logo_id = logo_org.match(/\/d\/(.+)\/view/);
+  const event = event_id[1];
+  const org = logo_id[1];
+
   return (
     <MainLayout username={username}>
       <section className={`${s["section-8"]} ${s["wf-section"]}`}>
         <div className={`${s["div-block"]}`}>
-          <p className={`${s["paragraph-6-copy"]}`}>LOGO</p>
+          <img
+            src={`https://drive.google.com/uc?export=view&id=${org}`}
+            alt="drive image"
+          />
         </div>
         <div className={`${s["container-8"]} ${s["w-container"]}`}>
           <h1 className={`${s["heading-4"]}`}>{title}</h1>
@@ -43,9 +57,11 @@ const Event = () => {
       </div>
       <section className={`${s["wf-section"]}`}>
         <div className={`${s["container-9"]} ${s["w-container"]}`}>
-          <p className={`${s["paragraph-3"]}`}>
-            Possible Image or Poster Placeholder
-          </p>
+          <img
+            className={`${s["paragraph-3"]}`}
+            src={`https://drive.google.com/uc?export=view&id=${event}`}
+            alt="drive image"
+          />
         </div>
       </section>
       <section className={`${s["section-5"]} ${s["wf-section"]}`}>

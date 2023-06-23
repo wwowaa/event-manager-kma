@@ -72,6 +72,8 @@ const MyCalendar = ({ username }) => {
       time: event.time,
       location: event.location,
       description: event.description,
+      logo_event: event.logo_event,
+      logo_org: event.logo_org,
     }));
   }
 
@@ -91,6 +93,8 @@ const MyCalendar = ({ username }) => {
         time: event.time,
         venue: event.location,
         description: event.description,
+        logo_event: event.logo_event,
+        logo_org: event.logo_org,
       },
     });
   };

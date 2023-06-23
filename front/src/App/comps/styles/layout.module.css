@@ -1436,7 +1436,7 @@ textarea.w-select {
   outline: 0;
 }
 
-.w-icon-dropdown-toggle {
+.w-dropdown .w-icon-dropdown-toggle {
   width: 1em;
   height: 1em;
   margin: auto 20px auto auto;
@@ -1451,6 +1451,11 @@ textarea.w-select {
   background: #ddd;
   display: none;
   position: absolute;
+}
+
+/* todo! */
+.w-dropdown:hover .w-dropdown-list {
+  display: block;
 }
 
 .w-dropdown-list.w--open {
@@ -2349,4 +2354,19 @@ body {
   font-weight: 400;
   font-style: normal;
   font-display: swap;
+}
+
+.dropdown1 {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content1 {
+  display: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.dropdown1:hover .dropdown-content1 {
+  display: block;
 }
