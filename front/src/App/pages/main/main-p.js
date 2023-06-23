@@ -22,7 +22,7 @@ const Main = () => {
       </section>
       <section className={`${s["wf-section"]}`}>
         <div className={`${s["container-9"]} ${s["w-container"]}`}>
-          <MyCalendar />
+          <MyCalendar username={username} />
         </div>
       </section>
       <section className={`${s["section-5"]} ${s["wf-section"]}`}>

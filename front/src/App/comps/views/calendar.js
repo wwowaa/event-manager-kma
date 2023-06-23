@@ -26,30 +26,13 @@ const localizer = dateFnsLocalizer({
   locales,
 });
 
-const events = [
-  {
-    _id: { $oid: "64921d8937ce00b3c0dc96ac" },
-    eventname: "Вистава «Споглядаючи сліди від ракет»",
-    organiser: "Бадді НаУКМА",
-    date: { $date: { $numberLong: "1687478400000" } },
-    time: "17.00",
-    location:
-      "вулиця Іллінська 9, Культурно-Мистецький центр НаУКМА, 3 поверх, Актова зала",
-    description:
-      "Опинившись у вирі війни, шестеро друзів постають перед неможливістю повернути минуле, горем, болем та потребою зберегти найцінніше — змогу жити далі та залишатися поруч одне з одним.  Запрошуємо на подію, яка не залишить нікого байдужим. Вистава за оригінальним сценарієм могилянкинь, події якої відгукнуться кожній людині, що почула сигнал повітряної тривоги 24 лютого 2022 року.  Придбати квиток за донат на збір для батька могилянця на фронті можна за покликанням: https://forms.gle/VTsDYY95pyKCp45z5",
-    __v: { $numberInt: "0" },
-  },
-];
-
-const MyCalendar = () => {
+const MyCalendar = ({ username }) => {
   const navigate = useNavigate();
   const [events, setEvents] = useState([]);
 
   // const [openModal, setOpenModal] = useState(false);
   // const startDate = useRef();
   // const endDate = useRef();
-
-  const [allEvents, setAllEvents] = useState(events);
 
   // function handleAddEvent(newEvent) {
   //   console.log(newEvent);
@@ -64,30 +47,52 @@ const MyCalendar = () => {
   }
 
   useEffect(() => {
-    // const fetchEvents = async () => {
-    //   try {
-    //     const res = await fetch("http://localhost:3000/events");
-    //     console.log(res.data);
-    //     const text = await res.text();
-    //     console.log(text);
-    //     const data = JSON.parse(text);
-    //     console.log(data);
-    //     if (res.ok) {
-    //       setEvents(data.events);
-    //     }
-    //   } catch (err) {
-    //     // console.log(err);
-    //   }
-    // };
-    // fetchEvents();
+    const fetchEvents = async () => {
+      try {
+        const res = await fetch("http://localhost:3000/events");
+        const data = await res.json();
+        // console.log(data);
+        if (res.ok) {
+          setEvents(convertEvents(data));
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchEvents();
   }, []);
+
+  function convertEvents(events) {
+    return events.map((event) => ({
+      id: event._id,
+      title: event.eventname,
+      start: new Date(event.date),
+      end: new Date(event.date),
+      organiser: event.organiser,
+      time: event.time,
+      location: event.location,
+      description: event.description,
+    }));
+  }
 
   const [selected, setSelected] = useState();
 
   const handleSelected = (event) => {
     setSelected(event);
 
-    // navigate(`../event/${event.id}`);
+    navigate(`../event/${event.id}`, {
+      state: {
+        username: username,
+        id: event.id,
+        title: event.eventname,
+        start: event.date,
+        end: event.date,
+        organiser: event.organiser,
+        time: event.time,
+        venue: event.location,
+        description: event.description,
+      },
+    });
   };
 
   return (
@@ -104,7 +109,7 @@ const MyCalendar = () => {
       <Calendar
         views={["month", "week", "day"]}
         localizer={localizer}
-        events={allEvents}
+        events={events}
         startAccessor="start"
         endAccessor="end"
         style={{ height: 500, margin: "50px" }}
