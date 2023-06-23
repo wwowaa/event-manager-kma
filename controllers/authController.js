@@ -91,3 +91,7 @@ module.exports.signout_get = (req, res) => {
   res.cookie("jwt", "", { maxAge: 1 });
   res.redirect("/auth");
 };
+
+module.exports.current_user_get = (req, res) => {
+  res.json({ user: res.locals.user });
+};
