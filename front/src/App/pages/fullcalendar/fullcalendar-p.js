@@ -23,7 +23,7 @@ const FullCalendar = () => {
       <section className={`${s["section-5"]} ${s["wf-section"]}`}>
         <div className={`${s["container-10"]} ${s["w-container"]}`}>
           <Link
-            to="./mainpage.html"
+            to="../mainpage.html"
             className={`${s["button-2"]} ${s["w-button"]}`}
           >
             BACK

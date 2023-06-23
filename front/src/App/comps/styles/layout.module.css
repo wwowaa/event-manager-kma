@@ -1,3 +1,23 @@
+.dropdown-toggle {
+  margin-top: 32px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dropdown {
+  color: #0033a1;
+  font-weight: 600;
+}
+
+.text-block {
+  color: #0033a1;
+  border: 2px solid #0033a1;
+  border-radius: 100px;
+  margin-left: 322px;
+  padding: 14px;
+  font-size: 24px;
+}
+
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -2311,6 +2331,14 @@ body {
 
 #w-node-_1f4b4022-35dc-bf16-9e9e-d0eca0176e70-a7504188,
 #w-node-e338ce3f-f36d-760c-8337-1c162cb76e4a-a7504188 {
+  grid-area: span 1 / span 1 / span 1 / span 1;
+}
+
+#w-node-_1f4b4022-35dc-bf16-9e9e-d0eca0176e70-a7504188,
+#w-node-e338ce3f-f36d-760c-8337-1c162cb76e4a-a7504188,
+#w-node-f92008a7-8b35-66e3-c9e6-be074db36a69-442f355a,
+#w-node-ca582dd3-54d8-958c-6433-3de79cc8350d-442f355a,
+#w-node-_1a09ed2b-8753-fc1d-a82f-46661f8b457e-442f355a {
   grid-area: span 1 / span 1 / span 1 / span 1;
 }
 
