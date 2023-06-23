@@ -43,3 +43,13 @@ module.exports.addevent_post = async (req, res) => {
         res.status(400).send( errors );
     }
 }
+
+module.exports.getEvents = async (req, res) => {
+    try {
+        const events = await Event.find();
+        res.status(200).json(events);
+    } catch (err) {
+        console.error (err);
+        res.status(500).send('Internal Server Error')
+    }
+}
