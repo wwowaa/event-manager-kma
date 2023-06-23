@@ -6,9 +6,11 @@ import MainLayout from "../../comps/views/layouts/main_layout";
 import s from "./mainpage.module.css";
 
 const Main = () => {
-  const { state } = useLocation();
+  const location = useLocation();
+  const { username } = location.state;
+
   return (
-    <MainLayout username={state.username}>
+    <MainLayout username={username}>
       <section className={`${s["wf-section"]}`}>
         <div className={`${s["container-8"]} ${s["w-container"]}`}>
           <h1 className={`${s["heading-3"]}`}>
@@ -27,6 +29,7 @@ const Main = () => {
         <div className={`${s["container-10"]} ${s["w-container"]}`}>
           <Link
             to="../fullcalendar"
+            state={{ username: username }}
             className={`${s["button-2"]} ${s["w-button"]}`}
           >
             Full Calendar

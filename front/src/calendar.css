@@ -1,3 +1,33 @@
+.rbc-toolbar button:active:hover,
+.rbc-toolbar button:active:focus,
+.rbc-toolbar button.rbc-active:hover,
+.rbc-toolbar button.rbc-active:focus {
+  color: #373a3c;
+  background-color: white;
+  border-color: white;
+}
+
+.rbc-toolbar button:hover {
+  box-shadow: inset 1px 1px 10px rgba(0, 0, 0, 0.2);
+  color: #373a3c;
+  border-color: white;
+  background-color: white;
+}
+
+.rbc-toolbar button {
+  color: white;
+  border-color: white;
+  transition-property: background-color, box-shadow, color;
+  transition-duration: 0.1s, 0.3s, 0.1s;
+  transition-delay: 0s, 0s, 0.03s;
+}
+
+.rbc-toolbar button.rbc-active {
+  color: #0033a1;
+  background-color: white;
+  border-color: white;
+}
+
 .rbc-day-bg {
   /* background: #e6e6e6; */
   background: #ffffff;
