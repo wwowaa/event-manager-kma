@@ -73,8 +73,8 @@ module.exports.signup_post = async (req, res) => {
 module.exports.auth_post = async (req, res) => {
   const { email, password } = req.body;
 
-  console.log(email);
-  console.log(password);
+  // console.log(email);
+  // console.log(password);
 
   try {
     const user = await User.auth(email, password);

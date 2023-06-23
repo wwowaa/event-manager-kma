@@ -67,7 +67,7 @@ const Event = () => {
           >
             <Link
               className={`${s["button"]} ${s["w-button"]} ${s["w--current"]}`}
-              to="../mainpage.html"
+              to="../main"
               aria-current="page"
               state={{ username: username }}
             >
@@ -80,7 +80,7 @@ const Event = () => {
           >
             <Link
               className={`${s["button-copy"]} ${s["w-button"]}`}
-              to="../mainpage.html"
+              to="../main"
               state={{ username: username }}
             >
               {" "}

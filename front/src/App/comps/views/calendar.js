@@ -26,27 +26,20 @@ const localizer = dateFnsLocalizer({
   locales,
 });
 
-// const events = [
-//   {
-//     title: "Big Meeting",
-//     allDay: true,
-//     start: new Date(2023, 6, 0),
-//     end: new Date(2023, 6, 0),
-//     id: 1,
-//   },
-//   {
-//     title: "Vacation",
-//     start: new Date(2023, 6, 7),
-//     end: new Date(2023, 6, 10),
-//     id: 2,
-//   },
-//   {
-//     title: "Conference",
-//     start: new Date(2023, 6, 20),
-//     end: new Date(20233, 6, 23),
-//     id: 3,
-//   },
-// ];
+const events = [
+  {
+    _id: { $oid: "64921d8937ce00b3c0dc96ac" },
+    eventname: "Вистава «Споглядаючи сліди від ракет»",
+    organiser: "Бадді НаУКМА",
+    date: { $date: { $numberLong: "1687478400000" } },
+    time: "17.00",
+    location:
+      "вулиця Іллінська 9, Культурно-Мистецький центр НаУКМА, 3 поверх, Актова зала",
+    description:
+      "Опинившись у вирі війни, шестеро друзів постають перед неможливістю повернути минуле, горем, болем та потребою зберегти найцінніше — змогу жити далі та залишатися поруч одне з одним.  Запрошуємо на подію, яка не залишить нікого байдужим. Вистава за оригінальним сценарієм могилянкинь, події якої відгукнуться кожній людині, що почула сигнал повітряної тривоги 24 лютого 2022 року.  Придбати квиток за донат на збір для батька могилянця на фронті можна за покликанням: https://forms.gle/VTsDYY95pyKCp45z5",
+    __v: { $numberInt: "0" },
+  },
+];
 
 const MyCalendar = () => {
   const navigate = useNavigate();
@@ -71,19 +64,22 @@ const MyCalendar = () => {
   }
 
   useEffect(() => {
-    const response = async () => {
-      try {
-        const res = await fetch("http://localhost:3000/events");
-        const data = await res.json();
-
-        if (res.ok) {
-          setEvents(data);
-        }
-        console.log(data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
+    // const fetchEvents = async () => {
+    //   try {
+    //     const res = await fetch("http://localhost:3000/events");
+    //     console.log(res.data);
+    //     const text = await res.text();
+    //     console.log(text);
+    //     const data = JSON.parse(text);
+    //     console.log(data);
+    //     if (res.ok) {
+    //       setEvents(data.events);
+    //     }
+    //   } catch (err) {
+    //     // console.log(err);
+    //   }
+    // };
+    // fetchEvents();
   }, []);
 
   const [selected, setSelected] = useState();

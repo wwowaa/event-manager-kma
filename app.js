@@ -5,20 +5,13 @@ const authRoutes = require("./routes/authRoutes");
 const eventRoutes = require("./routes/eventRoutes");
 const cookieParser = require("cookie-parser");
 const { requireAuth, checkUser } = require("./middleware/authMiddleware");
-const eventHandler = require("./middleware/eventMiddleware");
+const { eventHandler, getAllEvents } = require("./middleware/eventMiddleware");
 
 const app = express();
 const port = 3000;
 
-//TODO is necessary?
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
+var cors = require("cors");
+app.use(cors());
 
 //view-engine
 app.use(express.static("public"));
@@ -67,10 +60,6 @@ app.get("/addevent", requireAuth, (req, res) => res.render("addevent"));
 app.get("/:eventId", requireAuth, eventHandler, (req, res) => {
   res.render("event");
 });
-
-// app.get("/:eventId", requireAuth, eventHandler, (req, res) => {
-//   res.render("event");
-// });
 
 app.use(authRoutes);
 app.use(eventRoutes);
