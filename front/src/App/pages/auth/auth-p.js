@@ -76,7 +76,7 @@ const Auth = () => {
             </p>
             <form onSubmit={handleSubmit} className={`${s["w-form"]}`}>
               <label htmlFor="emailname" className={`${s["field-label"]}`}>
-                Username:
+                Email:
               </label>
               <input
                 className={`${s["w-input"]}`}

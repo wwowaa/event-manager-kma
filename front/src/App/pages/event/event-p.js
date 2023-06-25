@@ -21,8 +21,8 @@ const Event = () => {
     logo_org,
   } = location.state;
 
-  console.log(logo_event);
-  console.log(logo_org);
+  // console.log(logo_event);
+  // console.log(logo_org);
 
   const event_image_id = logo_event.match(/\/d\/(.+)\/view/)[1];
   const org_image_id = logo_org.match(/\/d\/(.+)\/view/)[1];
